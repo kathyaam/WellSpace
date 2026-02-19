@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Wobble animation for the letter w/ heart emoji in contact us */
+@keyframes whereinmnl-wobble {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-10deg); }
+    75% { transform: rotate(10deg); }
+}
+
+.wobble-emoji {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.wobble-emoji:hover {
+    animation: whereinmnl-wobble 0.5s ease;
+}
