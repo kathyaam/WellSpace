@@ -1,0 +1,265 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+* {
+  font-family: 'Poppins', sans-serif;
+}
+/*hamburguer menu */
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: #f3eeea;
+  
+}
+
+:root {
+  --bar-width: 60px;
+  --bar-height: 8px;
+  --hamburger-gap: 6px;
+  --foreground: #2f4156;
+  --background: white;
+  --hamburger-margin: 8px;
+  --animation-timing: 200ms ease-in-out;
+  --hamburger-height: calc(var(--bar-height) * 3 + var(--hamburger-gap) * 2);
+}
+
+.hamburger-menu {
+  --x-width: calc(var(--hamburger-height) * 1.41421356237);
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--hamburger-gap);
+  width: max-content;
+  position: fixed;
+  top: var(--hamburger-margin);
+  left: var(--hamburger-margin);
+  z-index: 2;
+  cursor: pointer;
+}
+
+.hamburger-menu:has(input:checked) {
+  --foreground: white;
+  --background: #2f4156;
+}
+
+.hamburger-menu:has(input:focus-visible)::before,
+.hamburger-menu:has(input:focus-visible)::after,
+.hamburger-menu input:focus-visible {
+  border: 1px solid var(--background);
+  box-shadow: 0 0 0 1px var(--foreground);
+}
+
+.hamburger-menu::before,
+.hamburger-menu::after,
+.hamburger-menu input {
+  content: "";
+  width: var(--bar-width);
+  height: var(--bar-height);
+  background-color: var(--foreground);
+  border-radius: 9999px;
+  transform-origin: left center;
+  transition: opacity var(--animation-timing), width var(--animation-timing),
+    rotate var(--animation-timing), translate var(--animation-timing),
+    background-color var(--animation-timing);
+}
+
+.hamburger-menu input {
+  appearance: none;
+  padding: 0;
+  margin: 0;
+  outline: none;
+  pointer-events: none;
+}
+
+.hamburger-menu:has(input:checked)::before {
+  rotate: 45deg;
+  width: var(--x-width);
+  translate: 0 calc(var(--bar-height) / -2);
+}
+
+.hamburger-menu:has(input:checked)::after {
+  rotate: -45deg;
+  width: var(--x-width);
+  translate: 0 calc(var(--bar-height) / 2);
+}
+
+.hamburger-menu input:checked {
+  opacity: 0;
+  width: 0;
+}
+
+.sidebar {
+  transition: translate var(--animation-timing);
+  translate: -100%;
+  padding: 0.5rem 1rem;
+  padding-top: calc(var(--hamburger-height) + var(--hamburger-margin) + 1rem);
+  background-color: var(--foreground);
+  color: var(--background);
+  max-width: 10rem;
+  min-height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.hamburger-menu:has(input:checked) + .sidebar {
+  translate: 0;
+}
+
+.main-content {
+  transition: margin-left var(--animation-timing);
+}
+
+.hamburger-menu:has(input:checked) ~ .main-content {
+  margin-left: 12rem; /* mismo ancho que el sidebar */
+}
+
+/* Main content */
+/*iconos*/
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.topbar-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-left: 4.5rem; /* espacio para no tapar el hamburger */
+}
+
+.topbar-icons {
+  display: flex;
+  gap: 0.5rem;
+  background: var(--card-bg);
+  border-radius: 999px;
+  padding: 0.4rem 0.9rem;
+}
+
+.topbar-icons svg {
+  width: 26px;
+  height: 26px;
+  fill: var(--foreground);
+  cursor: pointer;
+  opacity: 0.75;
+  transition: opacity 0.15s;
+}
+.topbar-icons svg:hover { opacity: 1; }
+
+/*tus sintomas*/
+.container-lg {
+  margin-top: calc(var(--hamburger-height) + var(--hamburger-margin) * 2 + 1rem);
+  padding: 0 1rem;
+}
+
+.btn-secondary {
+  background-color: white;
+  color: #2f4156;
+  border-color: #2f4156;
+}
+
+.btn-secondary:hover {
+  background-color: #2f4156;
+  color: white;
+  border-color: #2f4156;
+}
+
+/* The card that wraps the chart */
+.chart-card {
+  background: #d6e4f0;
+  border-radius: 20px;
+  padding: 1.25rem;
+}
+
+/* The canvas adjusts to the card width automatically */
+#symptomsChart {
+  width: 100% !important;
+}
+
+/* ============================================================
+   TARJETAS (cards)
+   ============================================================ */
+.card {
+  background: var(--card-bg);
+  border: none;
+  border-radius: 20px;
+  padding: 1.25rem;
+}
+
+/* Etiqueta pequeña arriba de cada card */
+.card-label {
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  color:#2f4156;
+  margin-bottom: 1rem;
+}
+
+.topbar {
+  display: flex;
+  justify-content: flex-end; /* push icons to the right */
+  align-items: center;
+  padding: 0.5rem 1rem;
+}
+
+.topbar-icons {
+  display: flex;
+  gap: 0.75rem;
+  background: #cfdde5;
+  border-radius: 999px;
+  padding: 0.5rem 1.2rem;
+}
+
+.topbar-icons i {
+  font-size: 1.8rem;  /* change this to make bigger/smaller */
+  color: #2f4156;
+  cursor: pointer;
+  transition: color 0.15s;
+}
+
+.topbar-icons i:hover {
+  color: #5b8fa8;
+}
+
+#select-notes {
+  width: 100%;
+  border: none;
+  border-radius: 12px;
+  padding: 0.65rem 1rem;
+  font-family: 'Poppins', sans-serif;
+  color: #2f4156;
+  font-size: 0.9rem;
+  resize: none; /* prevents the user from resizing it */
+  outline: none;
+  margin-top: 0.75rem;
+}
+
+.entry-note {
+  font-size: 0.78rem;
+  color: #7a8fa0;
+  margin-top: 0.2rem;
+  font-style: italic;
+}
+
+#save-btn {
+  background-color: #2f4156;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 0.6rem 1.5rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  width: 100%;
+  margin-top: 0.75rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+#save-btn:hover {
+  background-color: #5b8fa8;
+}
