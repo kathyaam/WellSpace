@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WellSpace - Medication & Appointments</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <button class="menu-btn">
+                <div class="menu-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+            
+            <div class="page-title">Change page</div>
+            
+            <div class="header-actions">
+                <button class="icon-btn" aria-label="Profile">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                    </svg>
+                </button>
+                <button class="icon-btn" aria-label="Notifications">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2zm-2 1H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5v6z"/>
+                    </svg>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Content Grid -->
+        <div class="main-grid">
+            <!-- Medications Section -->
+            <div class="meds-section">
+                <h2 class="section-header">List of meds</h2>
+                
+                <div class="meds-table">
+                    <div class="table-header">
+                        <div>Name</div>
+                        <div>Status</div>
+                        <div>Due Date</div>
+                        <div>Notes</div>
+                    </div>
+                    
+                    <div class="table-row">
+                        <div class="med-name">
+                            <input type="text" class="date-input" value="💊 Misoprostol" style="width: 100%;">
+                        </div>
+                        <div>
+                            <select class="date-input">
+                                <option>Select status</option>
+                                <option>Taken</option>
+                                <option selected>Missed</option>
+                                <option>Pending</option>
+                            </select>
+                        </div>
+                        <div>
+                            <input type="date" class="date-input" value="2025-03-04">
+                        </div>
+                        <div>
+                            <input type="text" class="date-input" placeholder="Notes" style="width: 100%;">
+                        </div>
+                    </div>
+                    
+                    <div class="table-row">
+                        <div class="med-name">
+                            <input type="text" class="date-input" value="⏰ Pending Med" style="width: 100%;">
+                        </div>
+                        <div>
+                            <select class="date-input">
+                                <option>Select status</option>
+                                <option>Taken</option>
+                                <option>Missed</option>
+                                <option selected>Pending</option>
+                            </select>
+                        </div>
+                        <div>
+                            <input type="date" class="date-input" value="2025-03-04">
+                        </div>
+                        <div>
+                            <input type="text" class="date-input" placeholder="Notes" style="width: 100%;">
+                        </div>
+                    </div>
+                    
+                    <!-- Empty rows for adding more -->
+                    <div class="table-row">
+                        <div class="med-name">
+                            <input type="text" class="date-input" placeholder="Medication name" style="width: 100%;">
+                        </div>
+                        <div>
+                            <select class="date-input">
+                                <option>Select status</option>
+                                <option>Taken</option>
+                                <option>Missed</option>
+                                <option>Pending</option>
+                            </select>
+                        </div>
+                        <div>
+                            <input type="date" class="date-input">
+                        </div>
+                        <div>
+                            <input type="text" class="date-input" placeholder="Notes" style="width: 100%;">
+                        </div>
+                    </div>
+                    
+                    <div class="table-row">
+                        <div class="med-name">
+                            <input type="text" class="date-input" placeholder="Medication name" style="width: 100%;">
+                        </div>
+                        <div>
+                            <select class="date-input">
+                                <option>Select status</option>
+                                <option>Taken</option>
+                                <option>Missed</option>
+                                <option>Pending</option>
+                            </select>
+                        </div>
+                        <div>
+                            <input type="date" class="date-input">
+                        </div>
+                        <div>
+                            <input type="text" class="date-input" placeholder="Notes" style="width: 100%;">
+                        </div>
+                    </div>
+                    
+                    <div class="table-row">
+                        <div class="med-name">
+                            <input type="text" class="date-input" placeholder="Medication name" style="width: 100%;">
+                        </div>
+                        <div>
+                            <select class="date-input">
+                                <option>Select status</option>
+                                <option>Taken</option>
+                                <option>Missed</option>
+                                <option>Pending</option>
+                            </select>
+                        </div>
+                        <div>
+                            <input type="date" class="date-input">
+                        </div>
+                        <div>
+                            <input type="text" class="date-input" placeholder="Notes" style="width: 100%;">
+                        </div>
+                    </div>
+                    
+                    <div class="table-row">
+                        <div class="med-name">
+                            <input type="text" class="date-input" placeholder="Medication name" style="width: 100%;">
+                        </div>
+                        <div>
+                            <select class="date-input">
+                                <option>Select status</option>
+                                <option>Taken</option>
+                                <option>Missed</option>
+                                <option>Pending</option>
+                            </select>
+                        </div>
+                        <div>
+                            <input type="date" class="date-input">
+                        </div>
+                        <div>
+                            <input type="text" class="date-input" placeholder="Notes" style="width: 100%;">
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="add-row-btn">+ Add medication</button>
+                
+                <a href="#" class="link-button">Where to buy meds →</a>
+            </div>
+
+            <!-- Calendar Section -->
+            <div class="calendar-section">
+                <div class="calendar-header">
+                    <h2 class="calendar-title">List of appointments</h2>
+                    
+                    <div class="calendar-toggle">
+                        <button class="toggle-btn">monthly</button>
+                        <button class="toggle-btn active">daily</button>
+                    </div>
+                </div>
+                
+                <div class="calendar-grid">
+                    <!-- Day headers -->
+                    <div class="calendar-day-header weekend">Su</div>
+                    <div class="calendar-day-header weekday">Mo</div>
+                    <div class="calendar-day-header weekday">Tu</div>
+                    <div class="calendar-day-header weekday">We</div>
+                    <div class="calendar-day-header weekday">Th</div>
+                    <div class="calendar-day-header weekday">Fr</div>
+                    <div class="calendar-day-header weekend">Sa</div>
+                    
+                    <!-- Days -->
+                    <div class="calendar-day weekday"></div>
+                    <div class="calendar-day weekday">1</div>
+                    <div class="calendar-day weekend">2</div>
+                    
+                    <div class="calendar-day weekend">3</div>
+                    <div class="calendar-day weekday">4</div>
+                    <div class="calendar-day weekday">5</div>
+                    <div class="calendar-day weekday">6</div>
+                    <div class="calendar-day weekday">7</div>
+                    <div class="calendar-day weekday">8</div>
+                    <div class="calendar-day weekend">9</div>
+                    
+                    <div class="calendar-day weekend">10</div>
+                    <div class="calendar-day weekday">11</div>
+                    <div class="calendar-day weekday">12</div>
+                    <div class="calendar-day weekday">13</div>
+                    <div class="calendar-day weekday">14</div>
+                    <div class="calendar-day weekday">15</div>
+                    <div class="calendar-day weekend">16</div>
+                    
+                    <div class="calendar-day weekend">17</div>
+                    <div class="calendar-day weekday">18</div>
+                    <div class="calendar-day weekday">19</div>
+                    <div class="calendar-day weekday">20</div>
+                    <div class="calendar-day weekday">21</div>
+                    <div class="calendar-day weekday">22</div>
+                    <div class="calendar-day weekend">23</div>
+                    
+                    <div class="calendar-day weekend">24</div>
+                    <div class="calendar-day weekday">25</div>
+                    <div class="calendar-day weekday">26</div>
+                    <div class="calendar-day weekday">27</div>
+                    <div class="calendar-day weekday">28</div>
+                    <div class="calendar-day weekday">29</div>
+                    <div class="calendar-day weekend">30</div>
+                    
+                    <div class="calendar-day weekend">31</div>
+                </div>
+                
+                <button class="add-appointment-btn">Add appointment</button>
+            </div>
+
+            <!-- Recommendations Section -->
+            <div class="recommendations-section">
+                <h2 class="recommendations-title">Recommendations</h2>
+                <textarea class="recommendation-text" placeholder="Write your treatment recommendations here..."></textarea>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Calendar day hover effects
+        const calendarDays = document.querySelectorAll('.calendar-day');
+        calendarDays.forEach(day => {
+            day.addEventListener('click', function() {
+                // Remove previous selection
+                calendarDays.forEach(d => d.classList.remove('has-appointment'));
+                // Add selection to clicked day
+                this.classList.add('has-appointment');
+            });
+        });
+
+        // Add medication button - adds new row to table
+        const addMedBtn = document.querySelector('.add-row-btn');
+        const medsTable = document.querySelector('.meds-table');
+        
+        addMedBtn.addEventListener('click', function() {
+            // Create new row
+            const newRow = document.createElement('div');
+            newRow.className = 'table-row';
+            newRow.innerHTML = `
+                <div class="med-name">
+                    <input type="text" class="date-input" placeholder="Medication name" style="width: 100%;">
+                </div>
+                <div>
+                    <select class="date-input">
+                        <option>Select status</option>
+                        <option>Taken</option>
+                        <option>Missed</option>
+                        <option>Pending</option>
+                    </select>
+                </div>
+                <div>
+                    <input type="date" class="date-input">
+                </div>
+                <div>
+                    <input type="text" class="date-input" placeholder="Notes" style="width: 100%;">
+                </div>
+            `;
+            
+            // Insert before the last row (which should remain empty)
+            medsTable.appendChild(newRow);
+            
+            // Focus on the medication name input
+            newRow.querySelector('input[type="text"]').focus();
+        });
+
+        // Add appointment button
+        const addApptBtn = document.querySelector('.add-appointment-btn');
+        addApptBtn.addEventListener('click', function() {
+            alert('Add appointment functionality would open a modal or form here');
+        });
+
+        // Toggle buttons
+        const toggleBtns = document.querySelectorAll('.toggle-btn');
+        toggleBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                toggleBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
