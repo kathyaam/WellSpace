@@ -1,0 +1,37 @@
+.container {
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  bottom: 20px; /* distancia del borde */
+  left: 0;
+  width: 100%;
+}
+
+.row {
+  display: flex;
+  gap: 20px; /* espacio entre cards */
+  width: 100%;
+  max-width: 900px;
+  justify-content: center;
+}
+
+.col-sm-6 {
+  flex: 1; /* hace que ambas ocupen mitad */
+}
+
+.card1 {
+   background: rgb(72, 182, 195);
+   border: 2px solid rgb(15, 123, 145);
+   border-radius: 22px;
+   font-size: 1.1rem;
+  font-weight: 800;
+}
+
+.card2 {
+   background: rgb(87, 162, 212);
+   border: 2px solid rgb(51, 82, 134);
+   border-radius: 22px;
+}
+ul{
+  list-style:none;
+}
