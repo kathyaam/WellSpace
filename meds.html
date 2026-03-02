@@ -13,15 +13,13 @@
     <div class="container">
         <!-- Header -->
         <header class="header">
-            <button class="menu-btn">
+            <button class="menu-btn" id="menuBtn">
                 <div class="menu-icon">
                     <span></span>
                     <span></span>
                     <span></span>
                 </div>
             </button>
-            
-            <div class="page-title">Change page</div>
             
             <div class="header-actions">
                 <button class="icon-btn" aria-label="Profile">
@@ -36,6 +34,33 @@
                 </button>
             </div>
         </header>
+
+        <!-- Sidebar Menu -->
+        <div class="sidebar-menu" id="sidebarMenu">
+            <div class="sidebar-header">
+                <h2 class="sidebar-title">WellSpace</h2>
+                <button class="close-btn" id="closeBtn">&times;</button>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item">
+                    <span class="nav-icon">🏠</span>
+                    <span>Home page</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <span class="nav-icon">📊</span>
+                    <span>Symptom Tracing</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <span class="nav-icon">🗺️</span>
+                    <span>Map</span>
+                </a>
+                <a href="#" class="nav-item active">
+                    <span class="nav-icon">💊</span>
+                    <span>Meds & Appointments</span>
+                </a>
+            </nav>
+        </div>
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
         <!-- Main Content Grid -->
         <div class="main-grid">
@@ -53,7 +78,10 @@
                     
                     <div class="table-row">
                         <div class="med-name">
-                            <input type="text" class="date-input" value="💊 Misoprostol" style="width: 100%;">
+                            <div class="med-name-input-wrapper">
+                                <input type="text" class="date-input med-name-input" value="Misoprostol" style="width: 100%;">
+                                <div class="med-name-tooltip"></div>
+                            </div>
                         </div>
                         <div>
                             <select class="date-input">
@@ -67,13 +95,16 @@
                             <input type="date" class="date-input" value="2025-03-04">
                         </div>
                         <div>
-                            <input type="text" class="date-input" placeholder="Notes" style="width: 100%;">
+                            <button class="notes-btn" data-medication="Misoprostol">📝</button>
                         </div>
                     </div>
                     
                     <div class="table-row">
                         <div class="med-name">
-                            <input type="text" class="date-input" value="⏰ Pending Med" style="width: 100%;">
+                            <div class="med-name-input-wrapper">
+                                <input type="text" class="date-input med-name-input" value="Pending Med" style="width: 100%;">
+                                <div class="med-name-tooltip"></div>
+                            </div>
                         </div>
                         <div>
                             <select class="date-input">
@@ -87,14 +118,17 @@
                             <input type="date" class="date-input" value="2025-03-04">
                         </div>
                         <div>
-                            <input type="text" class="date-input" placeholder="Notes" style="width: 100%;">
+                            <button class="notes-btn" data-medication="Pending Med">📝</button>
                         </div>
                     </div>
                     
                     <!-- Empty rows for adding more -->
                     <div class="table-row">
                         <div class="med-name">
-                            <input type="text" class="date-input" placeholder="Medication name" style="width: 100%;">
+                            <div class="med-name-input-wrapper">
+                                <input type="text" class="date-input med-name-input" placeholder="Medication name" style="width: 100%;">
+                                <div class="med-name-tooltip"></div>
+                            </div>
                         </div>
                         <div>
                             <select class="date-input">
@@ -108,13 +142,16 @@
                             <input type="date" class="date-input">
                         </div>
                         <div>
-                            <input type="text" class="date-input" placeholder="Notes" style="width: 100%;">
+                            <button class="notes-btn">📝</button>
                         </div>
                     </div>
                     
                     <div class="table-row">
                         <div class="med-name">
-                            <input type="text" class="date-input" placeholder="Medication name" style="width: 100%;">
+                            <div class="med-name-input-wrapper">
+                                <input type="text" class="date-input med-name-input" placeholder="Medication name" style="width: 100%;">
+                                <div class="med-name-tooltip"></div>
+                            </div>
                         </div>
                         <div>
                             <select class="date-input">
@@ -128,13 +165,16 @@
                             <input type="date" class="date-input">
                         </div>
                         <div>
-                            <input type="text" class="date-input" placeholder="Notes" style="width: 100%;">
+                            <button class="notes-btn">📝</button>
                         </div>
                     </div>
                     
                     <div class="table-row">
                         <div class="med-name">
-                            <input type="text" class="date-input" placeholder="Medication name" style="width: 100%;">
+                            <div class="med-name-input-wrapper">
+                                <input type="text" class="date-input med-name-input" placeholder="Medication name" style="width: 100%;">
+                                <div class="med-name-tooltip"></div>
+                            </div>
                         </div>
                         <div>
                             <select class="date-input">
@@ -148,13 +188,16 @@
                             <input type="date" class="date-input">
                         </div>
                         <div>
-                            <input type="text" class="date-input" placeholder="Notes" style="width: 100%;">
+                            <button class="notes-btn">📝</button>
                         </div>
                     </div>
                     
                     <div class="table-row">
                         <div class="med-name">
-                            <input type="text" class="date-input" placeholder="Medication name" style="width: 100%;">
+                            <div class="med-name-input-wrapper">
+                                <input type="text" class="date-input med-name-input" placeholder="Medication name" style="width: 100%;">
+                                <div class="med-name-tooltip"></div>
+                            </div>
                         </div>
                         <div>
                             <select class="date-input">
@@ -168,7 +211,7 @@
                             <input type="date" class="date-input">
                         </div>
                         <div>
-                            <input type="text" class="date-input" placeholder="Notes" style="width: 100%;">
+                            <button class="notes-btn">📝</button>
                         </div>
                     </div>
                 </div>
@@ -239,26 +282,190 @@
                     <div class="calendar-day weekend">31</div>
                 </div>
                 
-                <button class="add-appointment-btn">Add appointment</button>
+                <div class="daily-view" id="dailyView">
+                    <div class="daily-view-date" id="dailyViewDate">Today's Appointments</div>
+                    <div id="appointmentsList"></div>
+                </div>
+                
+                <button class="add-appointment-btn" id="addAppointmentBtn">Add appointment</button>
             </div>
 
             <!-- Recommendations Section -->
             <div class="recommendations-section">
-                <h2 class="recommendations-title">Recommendations</h2>
-                <textarea class="recommendation-text" placeholder="Write your treatment recommendations here..."></textarea>
+                <h2 class="recommendations-title">AI Recommendations</h2>
+                <div class="recommendation-chat">
+                    <div id="chatMessages" class="chat-messages">
+                        <div class="ai-message">
+                            Hello! I'm your AI health assistant. Type "send recommendations" and I'll analyze your medications and symptoms to provide personalized treatment suggestions.
+                        </div>
+                    </div>
+                    <div class="chat-input-container">
+                        <input type="text" id="chatInput" class="chat-input" placeholder="Type 'send recommendations' or ask a question...">
+                        <button id="sendBtn" class="send-btn">Send</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Appointment Modal -->
+        <div class="appointment-modal" id="appointmentModal">
+            <div class="appointment-modal-content notes-modal-content">
+                <div class="notes-modal-header">
+                    <div>
+                        <div class="notes-modal-title">Add Appointment</div>
+                        <div class="notes-modal-medication" id="appointmentDateDisplay"></div>
+                    </div>
+                    <button class="notes-modal-close" id="closeAppointmentModal">&times;</button>
+                </div>
+                <div class="notes-modal-body">
+                    <div class="appointment-form-group">
+                        <label for="appointmentTitle">Appointment Title *</label>
+                        <input 
+                            type="text" 
+                            id="appointmentTitle" 
+                            class="appointment-input" 
+                            placeholder="e.g., Doctor's Appointment, Blood Test"
+                            required>
+                    </div>
+                    
+                    <div class="appointment-form-group">
+                        <label>Time *</label>
+                        <div class="appointment-time-group">
+                            <input 
+                                type="time" 
+                                id="appointmentTime" 
+                                class="appointment-input"
+                                required>
+                            <select id="appointmentDuration" class="appointment-input">
+                                <option value="15">15 minutes</option>
+                                <option value="30" selected>30 minutes</option>
+                                <option value="45">45 minutes</option>
+                                <option value="60">1 hour</option>
+                                <option value="90">1.5 hours</option>
+                                <option value="120">2 hours</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="appointment-form-group">
+                        <label for="appointmentDesc">Description (Optional)</label>
+                        <textarea 
+                            id="appointmentDesc" 
+                            class="appointment-textarea" 
+                            placeholder="Add any notes about this appointment..."></textarea>
+                    </div>
+                </div>
+                <div class="notes-modal-footer">
+                    <button class="notes-btn-cancel" id="cancelAppointmentBtn">Cancel</button>
+                    <button class="notes-btn-save" id="saveAppointmentBtn">Save Appointment</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Notes Modal -->
+        <div class="notes-modal" id="notesModal">
+            <div class="notes-modal-content">
+                <div class="notes-modal-header">
+                    <div>
+                        <div class="notes-modal-title">Medication Notes</div>
+                        <div class="notes-modal-medication" id="modalMedName"></div>
+                    </div>
+                    <button class="notes-modal-close" id="closeNotesModal">&times;</button>
+                </div>
+                <div class="notes-modal-body">
+                    <textarea 
+                        class="notes-textarea" 
+                        id="notesTextarea" 
+                        placeholder="Add notes about this medication... 
+
+Examples:
+- Take with food
+- Side effects to watch for
+- Doctor's instructions
+- Reminders"></textarea>
+                    <div class="notes-char-count">
+                        <span id="charCount">0</span> / 500 characters
+                    </div>
+                </div>
+                <div class="notes-modal-footer">
+                    <button class="notes-btn-cancel" id="cancelNotesBtn">Cancel</button>
+                    <button class="notes-btn-save" id="saveNotesBtn">Save Notes</button>
+                </div>
             </div>
         </div>
     </div>
 
     <script>
+        // Sidebar menu toggle
+        const menuBtn = document.getElementById('menuBtn');
+        const closeBtn = document.getElementById('closeBtn');
+        const sidebarMenu = document.getElementById('sidebarMenu');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+        function openMenu() {
+            sidebarMenu.classList.add('active');
+            sidebarOverlay.classList.add('active');
+        }
+
+        function closeMenu() {
+            sidebarMenu.classList.remove('active');
+            sidebarOverlay.classList.remove('active');
+        }
+
+        menuBtn.addEventListener('click', openMenu);
+        closeBtn.addEventListener('click', closeMenu);
+        sidebarOverlay.addEventListener('click', closeMenu);
+
+        // Medication name tooltips
+        function setupMedNameTooltips() {
+            document.querySelectorAll('.med-name-input').forEach(input => {
+                const wrapper = input.closest('.med-name-input-wrapper');
+                if (!wrapper) return;
+                
+                const tooltip = wrapper.querySelector('.med-name-tooltip');
+                if (!tooltip) return;
+                
+                // Show tooltip on hover/focus
+                input.addEventListener('mouseenter', () => {
+                    tooltip.textContent = input.value || 'No name entered';
+                    tooltip.classList.add('show');
+                });
+                
+                input.addEventListener('focus', () => {
+                    tooltip.textContent = input.value || 'No name entered';
+                    tooltip.classList.add('show');
+                });
+                
+                // Hide tooltip
+                input.addEventListener('mouseleave', () => {
+                    tooltip.classList.remove('show');
+                });
+                
+                input.addEventListener('blur', () => {
+                    tooltip.classList.remove('show');
+                });
+                
+                // Update tooltip when typing
+                input.addEventListener('input', () => {
+                    tooltip.textContent = input.value || 'No name entered';
+                });
+            });
+        }
+
+        // Initialize tooltips for existing inputs
+        setupMedNameTooltips();
+
         // Calendar day hover effects
         const calendarDays = document.querySelectorAll('.calendar-day');
+        let selectedCalendarDay = null;
+
         calendarDays.forEach(day => {
             day.addEventListener('click', function() {
                 // Remove previous selection
                 calendarDays.forEach(d => d.classList.remove('has-appointment'));
                 // Add selection to clicked day
                 this.classList.add('has-appointment');
+                selectedCalendarDay = this;
             });
         });
 
@@ -272,7 +479,10 @@
             newRow.className = 'table-row';
             newRow.innerHTML = `
                 <div class="med-name">
-                    <input type="text" class="date-input" placeholder="Medication name" style="width: 100%;">
+                    <div class="med-name-input-wrapper">
+                        <input type="text" class="date-input med-name-input" placeholder="Medication name" style="width: 100%;">
+                        <div class="med-name-tooltip"></div>
+                    </div>
                 </div>
                 <div>
                     <select class="date-input">
@@ -286,30 +496,338 @@
                     <input type="date" class="date-input">
                 </div>
                 <div>
-                    <input type="text" class="date-input" placeholder="Notes" style="width: 100%;">
+                    <button class="notes-btn">📝</button>
                 </div>
             `;
             
             // Insert before the last row (which should remain empty)
             medsTable.appendChild(newRow);
             
+            // Setup tooltips for new input
+            setupMedNameTooltips();
+            
             // Focus on the medication name input
             newRow.querySelector('input[type="text"]').focus();
+            
+            // Attach notes button event to new button
+            const newNotesBtn = newRow.querySelector('.notes-btn');
+            attachNotesButtonEvent(newNotesBtn);
         });
 
-        // Add appointment button
-        const addApptBtn = document.querySelector('.add-appointment-btn');
-        addApptBtn.addEventListener('click', function() {
-            alert('Add appointment functionality would open a modal or form here');
+        // Notes Modal Functionality
+        const notesModal = document.getElementById('notesModal');
+        const notesTextarea = document.getElementById('notesTextarea');
+        const modalMedName = document.getElementById('modalMedName');
+        const closeNotesModal = document.getElementById('closeNotesModal');
+        const cancelNotesBtn = document.getElementById('cancelNotesBtn');
+        const saveNotesBtn = document.getElementById('saveNotesBtn');
+        const charCount = document.getElementById('charCount');
+
+        // Store notes data
+        const notesData = {};
+        let currentMedicationButton = null;
+
+        // Character counter
+        notesTextarea.addEventListener('input', function() {
+            const length = this.value.length;
+            charCount.textContent = length;
+            
+            if (length > 500) {
+                this.value = this.value.substring(0, 500);
+                charCount.textContent = 500;
+            }
         });
 
-        // Toggle buttons
+        // Function to open notes modal
+        function openNotesModal(button) {
+            currentMedicationButton = button;
+            const medicationName = button.getAttribute('data-medication') || 
+                                   button.closest('.table-row').querySelector('.med-name-input').value ||
+                                   'Unnamed Medication';
+            
+            modalMedName.textContent = medicationName;
+            
+            // Load existing notes if any
+            const existingNotes = notesData[medicationName] || '';
+            notesTextarea.value = existingNotes;
+            charCount.textContent = existingNotes.length;
+            
+            notesModal.classList.add('active');
+            notesTextarea.focus();
+        }
+
+        // Function to close notes modal
+        function closeModal() {
+            notesModal.classList.remove('active');
+            currentMedicationButton = null;
+        }
+
+        // Save notes
+        function saveNotes() {
+            const medicationName = modalMedName.textContent;
+            const notes = notesTextarea.value.trim();
+            
+            // Save notes data
+            if (notes) {
+                notesData[medicationName] = notes;
+                currentMedicationButton.classList.add('has-notes');
+            } else {
+                delete notesData[medicationName];
+                currentMedicationButton.classList.remove('has-notes');
+            }
+            
+            // Update button data attribute
+            currentMedicationButton.setAttribute('data-medication', medicationName);
+            
+            closeModal();
+        }
+
+        // Attach event to notes button
+        function attachNotesButtonEvent(button) {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                openNotesModal(this);
+            });
+        }
+
+        // Attach events to all existing notes buttons
+        document.querySelectorAll('.notes-btn').forEach(button => {
+            attachNotesButtonEvent(button);
+        });
+
+        // Modal close events
+        closeNotesModal.addEventListener('click', closeModal);
+        cancelNotesBtn.addEventListener('click', closeModal);
+        saveNotesBtn.addEventListener('click', saveNotes);
+
+        // Close modal when clicking outside
+        notesModal.addEventListener('click', function(e) {
+            if (e.target === notesModal) {
+                closeModal();
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && notesModal.classList.contains('active')) {
+                closeModal();
+            }
+        });
+
+        // Appointment Modal Functionality
+        const appointmentModal = document.getElementById('appointmentModal');
+        const appointmentTitle = document.getElementById('appointmentTitle');
+        const appointmentTime = document.getElementById('appointmentTime');
+        const appointmentDuration = document.getElementById('appointmentDuration');
+        const appointmentDesc = document.getElementById('appointmentDesc');
+        const appointmentDateDisplay = document.getElementById('appointmentDateDisplay');
+        const closeAppointmentModal = document.getElementById('closeAppointmentModal');
+        const cancelAppointmentBtn = document.getElementById('cancelAppointmentBtn');
+        const saveAppointmentBtn = document.getElementById('saveAppointmentBtn');
+        const addAppointmentBtn = document.getElementById('addAppointmentBtn');
+
+        // Store appointments data
+        const appointmentsData = {};
+
+        // Open appointment modal
+        addAppointmentBtn.addEventListener('click', function() {
+            if (!selectedCalendarDay || !selectedCalendarDay.textContent.trim()) {
+                alert('Please select a day on the calendar first!');
+                return;
+            }
+            
+            const day = selectedCalendarDay.textContent.trim();
+            appointmentDateDisplay.textContent = `For day ${day}`;
+            appointmentModal.classList.add('active');
+            appointmentTitle.focus();
+        });
+
+        // Close appointment modal
+        function closeAppointmentModalFunc() {
+            appointmentModal.classList.remove('active');
+            // Clear form
+            appointmentTitle.value = '';
+            appointmentTime.value = '';
+            appointmentDesc.value = '';
+        }
+
+        closeAppointmentModal.addEventListener('click', closeAppointmentModalFunc);
+        cancelAppointmentBtn.addEventListener('click', closeAppointmentModalFunc);
+
+        // Save appointment
+        saveAppointmentBtn.addEventListener('click', function() {
+            const title = appointmentTitle.value.trim();
+            const time = appointmentTime.value;
+            
+            if (!title || !time) {
+                alert('Please fill in the appointment title and time!');
+                return;
+            }
+            
+            const day = selectedCalendarDay.textContent.trim();
+            const duration = appointmentDuration.value;
+            const description = appointmentDesc.value.trim();
+            
+            // Store appointment
+            if (!appointmentsData[day]) {
+                appointmentsData[day] = [];
+            }
+            
+            appointmentsData[day].push({
+                title: title,
+                time: time,
+                duration: duration,
+                description: description
+            });
+            
+            // Sort appointments by time
+            appointmentsData[day].sort((a, b) => a.time.localeCompare(b.time));
+            
+            closeAppointmentModalFunc();
+            alert('Appointment added successfully!');
+        });
+
+        // Close modal when clicking outside
+        appointmentModal.addEventListener('click', function(e) {
+            if (e.target === appointmentModal) {
+                closeAppointmentModalFunc();
+            }
+        });
+
+        // Toggle buttons for monthly/daily view
         const toggleBtns = document.querySelectorAll('.toggle-btn');
+        const calendarGrid = document.querySelector('.calendar-grid');
+        const dailyView = document.getElementById('dailyView');
+        const dailyViewDate = document.getElementById('dailyViewDate');
+        const appointmentsList = document.getElementById('appointmentsList');
+        
         toggleBtns.forEach(btn => {
             btn.addEventListener('click', function() {
                 toggleBtns.forEach(b => b.classList.remove('active'));
                 this.classList.add('active');
+                
+                const isDaily = this.textContent.trim() === 'daily';
+                
+                if (isDaily) {
+                    calendarGrid.style.display = 'none';
+                    dailyView.classList.add('active');
+                    showDailyView();
+                } else {
+                    calendarGrid.style.display = 'grid';
+                    dailyView.classList.remove('active');
+                }
             });
+        });
+
+        // Show daily view
+        function showDailyView() {
+            const today = new Date();
+            const day = today.getDate();
+            const monthNames = ["January", "February", "March", "April", "May", "June",
+                "July", "August", "September", "October", "November", "December"];
+            const month = monthNames[today.getMonth()];
+            
+            dailyViewDate.textContent = `${month} ${day}, ${today.getFullYear()}`;
+            
+            // Show appointments for today
+            if (appointmentsData[day] && appointmentsData[day].length > 0) {
+                appointmentsList.innerHTML = appointmentsData[day].map(apt => `
+                    <div class="appointment-item">
+                        <div class="appointment-time">${formatTime(apt.time)} (${apt.duration} min)</div>
+                        <div class="appointment-title">${apt.title}</div>
+                        ${apt.description ? `<div class="appointment-desc">${apt.description}</div>` : ''}
+                    </div>
+                `).join('');
+            } else {
+                appointmentsList.innerHTML = `
+                    <div class="no-appointments">
+                        <div class="no-appointments-icon">📅</div>
+                        <div>No appointments for today</div>
+                    </div>
+                `;
+            }
+        }
+
+        // Format time from 24h to 12h
+        function formatTime(time24) {
+            const [hours, minutes] = time24.split(':');
+            const h = parseInt(hours);
+            const ampm = h >= 12 ? 'PM' : 'AM';
+            const h12 = h % 12 || 12;
+            return `${h12}:${minutes} ${ampm}`;
+        }
+
+        // Add appointment button (old one - keep for compatibility)
+        const oldAddApptBtn = document.querySelector('.add-appointment-btn');
+        if (oldAddApptBtn && oldAddApptBtn.id !== 'addAppointmentBtn') {
+            oldAddApptBtn.addEventListener('click', function() {
+                if (!selectedCalendarDay) {
+                    alert('Please select a day on the calendar first!');
+                }
+            });
+        }
+
+        // Toggle buttons (old code - removed as it's now integrated above)
+
+        // AI Chat functionality
+        const chatInput = document.getElementById('chatInput');
+        const sendBtn = document.getElementById('sendBtn');
+        const chatMessages = document.getElementById('chatMessages');
+
+        function addMessage(text, isUser = false) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = isUser ? 'user-message' : 'ai-message';
+            messageDiv.textContent = text;
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function generateRecommendations() {
+            // Simulate AI thinking
+            addMessage('Analyzing your medications and health data...', false);
+            
+            setTimeout(() => {
+                const recommendations = `Based on your current medications (Misoprostol, Pending Med) and treatment history, here are my recommendations:
+
+1. **Medication Adherence**: You have a missed dose of Misoprostol. Consider setting up reminders to improve adherence.
+
+2. **Follow-up Care**: Schedule a follow-up appointment with your healthcare provider within the next 2 weeks to review your current treatment plan.
+
+3. **Symptom Tracking**: Continue documenting any side effects or symptoms you experience with your current medications.
+
+4. **Lifestyle**: Maintain a consistent schedule for taking medications, ideally at the same time each day.
+
+Remember: These are general suggestions based on your data. Always consult your healthcare provider before making any changes to your treatment plan.`;
+                
+                addMessage(recommendations, false);
+            }, 1500);
+        }
+
+        function handleSend() {
+            const message = chatInput.value.trim();
+            if (message === '') return;
+
+            addMessage(message, true);
+            chatInput.value = '';
+
+            // Check if user is asking for recommendations
+            if (message.toLowerCase().includes('send recommendations') || 
+                message.toLowerCase().includes('recommend') ||
+                message.toLowerCase().includes('suggest')) {
+                generateRecommendations();
+            } else {
+                // Generic AI response for other queries
+                setTimeout(() => {
+                    addMessage('I can provide personalized treatment recommendations based on your medication history. Type "send recommendations" to get started, or ask me specific questions about your treatment plan.', false);
+                }, 800);
+            }
+        }
+
+        sendBtn.addEventListener('click', handleSend);
+        chatInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                handleSend();
+            }
         });
     </script>
 </body>
