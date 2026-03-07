@@ -168,6 +168,14 @@ body {
   margin-left: 4.5rem; /* espacio para no tapar el hamburger */
 }
 
+.card {
+  background-color: #c6d8e4; 
+  border-radius: 30px;       /* Bordes muy redondeados */
+  padding: 25px;
+  color: rgb(73, 73, 73);
+  margin-bottom: 20px;
+}
+
 
 .container {
   display: flex;
@@ -190,20 +198,41 @@ body {
   flex: 1; /* hace que ambas ocupen mitad */
 }
 
+.cards-container{
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: -40px; 
+}
+
 .card1 {
-   background: rgb(72, 182, 195);
-   border: 2px solid rgb(15, 123, 145);
-   border-radius: 22px;
+   background:#c6d8e4;
+   border:0.5px solid rgb(51, 82, 134);
+   border-radius: 30px;
    font-size: 1.1rem;
   font-weight: 800;
 }
 
 .card2 {
-   background: rgb(87, 162, 212);
-   border: 2px solid rgb(51, 82, 134);
-   border-radius: 22px;
+   background: #c6d8e4;
+   border: 0.5px solid rgb(51, 82, 134);
+   border-radius: 30px;
+   display: flex;
+    flex-direction: column;
+    gap: 30px;
 }
 ul{
   list-style:none;
 }
 
+.chart-container{
+  width: 100%;
+  max-width: 500px;
+  height: 220px;
+  margin: auto;
+}
+
+#symptomsChart{
+  max-height: 100px;
+  width: 100%;
+}
