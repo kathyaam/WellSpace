@@ -3,12 +3,7 @@
 * {
   font-family: 'Poppins', sans-serif;
 }
-/*hamburguer menu */
-*,
-*::after,
-*::before {
-  box-sizing: border-box;
-}
+
 
 body {
   margin: 0;
@@ -27,96 +22,172 @@ body {
   --hamburger-height: calc(var(--bar-height) * 3 + var(--hamburger-gap) * 2);
 }
 
-.hamburger-menu {
-  --x-width: calc(var(--hamburger-height) * 1.41421356237);
 
-  display: flex;
-  flex-direction: column;
-  gap: var(--hamburger-gap);
-  width: max-content;
-  position: fixed;
-  top: var(--hamburger-margin);
-  left: var(--hamburger-margin);
-  z-index: 2;
-  cursor: pointer;
+/* ── Checkbox toggle (hidden) ── */
+#sidebar-toggle { display: none; }
+
+/* ── Hamburger button ── */
+.menu-btn {
+    background: #ffffff;
+    border: none;
+    padding: 16px 24px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    display: inline-flex;
+    position: fixed;
+    top: var(--hamburger-margin, 8px);
+    left: var(--hamburger-margin, 8px);
+    z-index: 3;
 }
 
-.hamburger-menu:has(input:checked) {
-  --foreground: white;
-  --background: #2f4156;
+.menu-btn:hover {
+    background: #e8f0f5;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
 }
 
-.hamburger-menu:has(input:focus-visible)::before,
-.hamburger-menu:has(input:focus-visible)::after,
-.hamburger-menu input:focus-visible {
-  border: 1px solid var(--background);
-  box-shadow: 0 0 0 1px var(--foreground);
+.menu-icon {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
 
-.hamburger-menu::before,
-.hamburger-menu::after,
-.hamburger-menu input {
-  content: "";
-  width: var(--bar-width);
-  height: var(--bar-height);
-  background-color: var(--foreground);
-  border-radius: 9999px;
-  transform-origin: left center;
-  transition: opacity var(--animation-timing), width var(--animation-timing),
-    rotate var(--animation-timing), translate var(--animation-timing),
-    background-color var(--animation-timing);
+.menu-icon span {
+    display: block;
+    width: 24px;
+    height: 3px;
+    background: #2f4156;
+    border-radius: 2px;
+    transition: all 0.3s ease;
 }
 
-.hamburger-menu input {
-  appearance: none;
-  padding: 0;
-  margin: 0;
-  outline: none;
-  pointer-events: none;
+.menu-btn:hover .menu-icon span {
+    background: #5b8fa8;
 }
 
-.hamburger-menu:has(input:checked)::before {
-  rotate: 45deg;
-  width: var(--x-width);
-  translate: 0 calc(var(--bar-height) / -2);
-}
-
-.hamburger-menu:has(input:checked)::after {
-  rotate: -45deg;
-  width: var(--x-width);
-  translate: 0 calc(var(--bar-height) / 2);
-}
-
-.hamburger-menu input:checked {
-  opacity: 0;
-  width: 0;
-}
-
+/* ── Sidebar panel ── */
 .sidebar {
-  transition: translate var(--animation-timing);
-  translate: -100%;
-  padding: 0.5rem 1rem;
-  padding-top: calc(var(--hamburger-height) + var(--hamburger-margin) + 1rem);
-  background-color: var(--foreground);
-  color: var(--background);
-  max-width: 10rem;
-  min-height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 280px;
+    min-height: 100vh;
+    background: #ffffff;
+    z-index: 2;
+    translate: -100%;
+    transition: translate 200ms ease-in-out;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 4px 0 24px rgba(0,0,0,0.10);
+    padding: 0;
 }
 
-.hamburger-menu:has(input:checked) + .sidebar {
-  translate: 0;
+/* Remove the active highlight entirely */
+.nav-item.active {
+    background: none;
+    font-weight: 500;
 }
 
-.main-content {
-  transition: margin-left var(--animation-timing);
+/* Push main content right when sidebar opens */
+#sidebar-toggle:checked ~ .main-content {
+    margin-left: 280px;
 }
 
-.hamburger-menu:has(input:checked) ~ .main-content {
-  margin-left: 12rem; /* mismo ancho que el sidebar */
+#sidebar-toggle:checked ~ .sidebar {
+    translate: 0;
+}
+
+/* ── Sidebar header ── */
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px;
+    border-bottom: 1px solid rgba(47,65,86,0.1);
+}
+
+.sidebar-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #2f4156;
+    margin: 0;
+}
+
+.close-btn {
+    font-size: 24px;
+    cursor: pointer;
+    color: #2f4156;
+    padding: 4px 10px;
+    border-radius: 8px;
+    transition: background 0.2s ease;
+    text-decoration: none;
+    line-height: 1;
+}
+
+.close-btn:hover {
+    background: #e8f0f5;
+}
+
+/* ── Nav items ── */
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    gap: 4px;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 16px;
+    border-radius: 12px;
+    text-decoration: none;
+    color: #2f4156;
+    font-size: 15px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: #eaf2f7;
+    color: #2f4156;
+}
+
+.nav-item.active {
+    background: #eaf2f7;
+    color: #2f4156;
+    font-weight: 600;
+}
+
+.nav-icon {
+    font-size: 20px;
+    width: 28px;
+    text-align: center;
+}
+
+/* ── Overlay ── */
+.sidebar-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 200ms ease-in-out;
+}
+
+#sidebar-toggle:checked ~ .sidebar-overlay {
+    opacity: 1;
+    pointer-events: all;
+}
+
+/* ── Hide hamburger when sidebar is open ── */
+#sidebar-toggle:checked ~ .menu-btn {
+    display: none;
 }
 
 /* Main content */
