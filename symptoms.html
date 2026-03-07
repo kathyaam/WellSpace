@@ -11,6 +11,25 @@
     <link rel="stylesheet" href="symptom.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 
+<script>
+  // Load Firebase as regular scripts, not modules
+</script>
+<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+<script>
+  const firebaseConfig = {
+  apiKey: "AIzaSyCyGFIYQrj4y8S5Fx_yLs5iWQgYFXz__4w",
+  authDomain: "wellspace-fded4.firebaseapp.com",
+  projectId: "wellspace-fded4",
+  storageBucket: "wellspace-fded4.firebasestorage.app",
+  messagingSenderId: "555499152067",
+  appId: "1:555499152067:web:b4d84cb6198f87440af876"
+  };
+
+  firebase.initializeApp(firebaseConfig);
+  window.db = firebase.firestore();
+</script>
+  
 </head>
 
 <body>

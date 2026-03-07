@@ -1,104 +1,121 @@
-// ============================================================
-// CHART SETUP
-// ============================================================
+// Wait for Firebase to be ready
+window.addEventListener('load', function() {
 
-// Step 1: Find the <canvas id="symptomsChart"> in the HTML
-// Chart.js needs a canvas element to draw on
-const canvas = document.getElementById('symptomsChart');
+  // ── DATETIME ──
+  function displayDateTime() {
+    const el = document.getElementById('datetime-display');
+    if (el) el.textContent = new Date().toLocaleString();
+  }
+  displayDateTime();
+  setInterval(displayDateTime, 1000);
 
-// Step 2: Get the "drawing tool" from the canvas
-const ctx = canvas.getContext('2d');
+  // ── DATA ──
+  const entries = [];
+  const intensityEmoji = { '1':'☺️','2':'🙂','3':'🫤','4':'🙁','5':'😟' };
+  const monthNames = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 
-// Step 3: Define the data for the chart
-const chartData = {
-
-  // labels = what shows on the X axis (bottom)
-  labels: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
-
-  // datasets = the actual lines/bars on the chart
-  datasets: [{
-    label: 'Symptoms',
-    
-    // data = the Y axis values, one number per month
-    // This starts at all zeros: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-    data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-
-    borderColor: '#5b8fa8',                    // line color
-    backgroundColor: 'rgba(91,143,168,0.12)',  // fill color under the line
-    tension: 0.4,                              // line curve (0 = straight, 1 = very curved)
-    fill: true,                                // fill the area under the line
-    pointBackgroundColor: '#2f4156',           // dot color
-    pointRadius: 5,                            // dot size
-  }]
-};
-
-// Step 4: Create the chart
-const symptomsChart = new Chart(ctx, {
-  type: 'line',    // chart type: 'line', 'bar', 'pie', 'doughnut'...
-  data: chartData,
-  options: {
-    responsive: true,
-    plugins: {
-      legend: { display: false } // hide the legend label at the top
+  // ── CHART ──
+  const ctx = document.getElementById('symptomsChart').getContext('2d');
+  const symptomsChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: monthNames,
+      datasets: [{
+        label: 'Symptoms',
+        data: Array(12).fill(0),
+        borderColor: '#5b8fa8',
+        backgroundColor: 'rgba(91,143,168,0.12)',
+        tension: 0.4,
+        fill: true,
+        pointBackgroundColor: '#2f4156',
+        pointRadius: 5,
+      }]
     },
-    scales: {
-      y: {
-        beginAtZero: true,               // Y axis starts at 0
-        ticks: { stepSize: 1 },          // count by 1s (not 0.5, 2, etc.)
-        grid: { color: 'rgba(0,0,0,0.05)' }
-      },
-      x: {
-        grid: { display: false }         // no vertical grid lines
+    options: {
+      responsive: true,
+      plugins: { legend: { display: false } },
+      scales: {
+        y: { beginAtZero: true, ticks: { stepSize: 1 } },
+        x: { grid: { display: false } }
       }
     }
-  }
-});
-
-// ============================================================
-// HOW TO UPDATE THE CHART WITH REAL DATA
-// ============================================================
-// Every time a new symptom is added, this function runs.
-// It counts how many entries fall in each month,
-// then tells Chart.js to redraw with the new numbers.
-
-function updateChart(entries) {
-
-  // Create an array of 12 zeros, one slot per month
-  const counts = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-
-  // Loop through every saved entry
-  entries.forEach(function(entry) {
-
-    // Get the month number from the entry's date
-    // getMonth() returns: 0=Jan, 1=Feb, 2=Mar ... 11=Dec
-    const month = new Date(entry.time).getMonth();
-
-    // Add 1 to that month's count
-    counts[month]++;
   });
 
-  // Replace the chart's data with the new counts
-  symptomsChart.data.datasets[0].data = counts;
+  function updateChart() {
+    const counts = Array(12).fill(0);
+    entries.forEach(function(e) {
+      const month = new Date(e.time).getMonth();
+      counts[month]++;
+    });
+    symptomsChart.data.datasets[0].data = counts;
+    symptomsChart.update();
+  }
 
-  // Tell Chart.js to redraw
-  symptomsChart.update();
-}
+  // ── RENDER ENTRIES ──
+  function renderEntries() {
+    const lista = document.getElementById('entries-list');
+    if (!lista) return;
+    if (entries.length === 0) {
+      lista.innerHTML = '<p style="color:#7a8fa0;text-align:center;">No entries yet.</p>';
+      return;
+    }
+    lista.innerHTML = [...entries].reverse().map(function(e) {
+      return `
+        <div class="entry-item">
+          <div>
+            <div class="entry-name">${e.symptom}</div>
+            <div class="entry-meta">${new Date(e.time).toLocaleString()}</div>
+            ${e.notes ? `<div class="entry-note">${e.notes}</div>` : ''}
+          </div>
+          <div class="intensity-badge">${intensityEmoji[e.intensity]} ${e.intensity}</div>
+        </div>
+      `;
+    }).join('');
+  }
 
-//form
-const symptom = document.getElementById('select-symptom').value;
-function addEntry() {
+// ── SAVE TO FIREBASE ──
+window.addEntry = async function() {
   const symptom   = document.getElementById('select-symptom').value;
   const intensity = document.getElementById('select-intensity').value;
   const time      = document.getElementById('select-time').value;
-  const notes     = document.getElementById('select-notes').value; 
+  const notes     = document.getElementById('select-notes') ? document.getElementById('select-notes').value : '';
 
-  entries.push({
-    symptom:   symptom,
-    intensity: intensity,
-    time:      time,
-    notes:     notes
-  });
+  if (!symptom || !intensity || !time) {
+    alert('Please fill all fields.');
+    return;
+  }
 
-  // clear the field after saving
-  document.getElementById('select-notes').value = '';
+  try {
+    await window.db.collection('symptoms').add({
+      symptom, intensity, time, notes,
+      createdAt: new Date()
+    });
+    document.getElementById('select-symptom').value   = '';
+    document.getElementById('select-intensity').value = '';
+    document.getElementById('select-time').value      = '';
+    if (document.getElementById('select-notes')) document.getElementById('select-notes').value = '';
+    loadEntries();
+  } catch(e) {
+    console.error('Error saving:', e);
+    alert('Error saving. Check console (F12).');
+  }
 }
+
+// ── LOAD FROM FIREBASE ──
+async function loadEntries() {
+  try {
+    const snapshot = await window.db.collection('symptoms').get();
+    entries.length = 0;
+    snapshot.forEach(function(doc) {
+      entries.push(doc.data());
+    });
+    renderEntries();
+    updateChart();
+  } catch(e) {
+    console.error('Error loading:', e);
+  }
+}  
+
+  // Load on startup
+  loadEntries();
+});
