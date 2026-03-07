@@ -29,25 +29,47 @@
   firebase.initializeApp(firebaseConfig);
   window.db = firebase.firestore();
 </script>
-  
+
 </head>
 
 <body>
-      <label class="hamburger-menu">
-      <input type="checkbox" />
-    </label>
-    <aside class="sidebar">
-      <nav>
-        <div>Sign in</div>
-        <br>
-        <div>Symptoms</div>
-        <br>
-        <div>Meds and appointment</div>
-        <br>
-        <div>Map</div>
-      </nav>
-    </aside>
 
+  
+      <input type="checkbox" id="sidebar-toggle">
+
+<label for="sidebar-toggle" class="menu-btn">
+    <div class="menu-icon">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</label>
+
+<aside class="sidebar">
+    <div class="sidebar-header">
+        <h2 class="sidebar-title">WellSpace</h2>
+        <label for="sidebar-toggle" class="close-btn">&times;</label>
+    </div>
+    <nav class="sidebar-nav">
+        <a href="index.html" class="nav-item">
+            <span class="nav-icon">🏠</span>
+            <span>Home page</span>
+        </a>
+        <a href="symptoms.html" class="nav-item">
+            <span class="nav-icon">📊</span>
+            <span>Symptom Tracking</span>
+        </a>
+        <a href="#" class="nav-item">
+            <span class="nav-icon">🗺️</span>
+            <span>Map</span>
+        </a>
+        <a href="meds.html" class="nav-item">
+        <span class="nav-icon">💊</span>
+        <span>Meds & Appointments</span>
+        </a>
+    </nav>
+</aside>
+<label for="sidebar-toggle" class="sidebar-overlay"></label>
 
     <div class="main-content container-lg">
     <h2 style="color: #2f4156;">Today's date is: <span id="datetime-display"></span></h2>
@@ -66,6 +88,7 @@
     // Update the date and time every second (1000 milliseconds)
     setInterval(displayDateTime, 1000);
 </script>
+
 
 <!-- Top right icons -->
 <div class="topbar">
@@ -105,10 +128,6 @@
 <textarea id="select-notes" placeholder="Add notes (optional)" rows="3"></textarea>
 <button id="save-btn" onclick="addEntry()">Save symptom</button>
 
-    </div>
-  </div>
-    </div>
-
 <div class="col-12">
         <div class="card">
           <div class="card-label">Past symptoms</div>
@@ -120,6 +139,12 @@
           </div>
         </div>
       </div>
+
+    </div>
+  </div>
+    </div>
+
+
 
 </div>
 
