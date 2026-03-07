@@ -33,7 +33,6 @@
 </head>
 
 <body>
-
   
       <input type="checkbox" id="sidebar-toggle">
 
@@ -108,25 +107,25 @@
     <div class="card container-lg" style="background-color: #cfdde5;">
   <div class="card-body" >
     <h3 style="color: #2f4156;">Add your symptoms here</h3>
-    <select id="select-symptom">
-  <option value="" disabled selected>Type of symptom</option>
-  <option value="Headache">Headache</option>
-  <option value="Dizziness">Dizziness</option>
-  <option value="Tummy ache">Tummy ache</option>
+    <select id="select-symptom" style="color: #2f4156;">
+  <option value="" disabled selected style="color: #2f4156;">Type of symptom</option>
+  <option value="Headache" style="color: #2f4156;">Headache</option>
+  <option value="Dizziness" style="color: #2f4156;">Dizziness</option>
+  <option value="Tummy ache" style="color: #2f4156;">Tummy ache</option>
 </select>
 
-<select id="select-intensity">
-  <option value="" disabled selected>Intensity</option>
-  <option value="1">☺️ 1 - Really low</option>
-  <option value="2">🙂 2 - Low</option>
-  <option value="3">🫤 3 - Mid</option>
-  <option value="4">🙁 4 - High</option>
-  <option value="5">😟 5 - Really high</option>
+<select id="select-intensity" style="color: #2f4156;">
+  <option value="" disabled selected style="color: #2f4156;">Intensity</option>
+  <option value="1" style="color: #2f4156;">☺️ 1 - Really low</option>
+  <option value="2" style="color: #2f4156;">🙂 2 - Low</option>
+  <option value="3" style="color: #2f4156;">🫤 3 - Mid</option>
+  <option value="4" style="color: #2f4156;">🙁 4 - High</option>
+  <option value="5" style="color: #2f4156;">😟 5 - Really high</option>
 </select>
 
 <input type="datetime-local" id="select-time" />
 <textarea id="select-notes" placeholder="Add notes (optional)" rows="3"></textarea>
-<button id="save-btn" onclick="addEntry()">Save symptom</button>
+<button id="save-btn" onclick="addEntry()" >Save symptom</button>
 
 <div class="col-12">
         <div class="card">
