@@ -29,25 +29,46 @@
   firebase.initializeApp(firebaseConfig);
   window.db = firebase.firestore();
 </script>
-  
+
 </head>
 
 <body>
-      <label class="hamburger-menu">
-      <input type="checkbox" />
-    </label>
-    <aside class="sidebar">
-      <nav>
-        <div>Sign in</div>
-        <br>
-        <div>Symptoms</div>
-        <br>
-        <div>Meds and appointment</div>
-        <br>
-        <div>Map</div>
-      </nav>
-    </aside>
+  
+      <input type="checkbox" id="sidebar-toggle">
 
+<label for="sidebar-toggle" class="menu-btn">
+    <div class="menu-icon">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</label>
+
+<aside class="sidebar">
+    <div class="sidebar-header">
+        <h2 class="sidebar-title">WellSpace</h2>
+        <label for="sidebar-toggle" class="close-btn">&times;</label>
+    </div>
+    <nav class="sidebar-nav">
+        <a href="index.html" class="nav-item">
+            <span class="nav-icon">🏠</span>
+            <span>Home page</span>
+        </a>
+        <a href="symptoms.html" class="nav-item">
+            <span class="nav-icon">📊</span>
+            <span>Symptom Tracking</span>
+        </a>
+        <a href="#" class="nav-item">
+            <span class="nav-icon">🗺️</span>
+            <span>Map</span>
+        </a>
+        <a href="meds.html" class="nav-item">
+        <span class="nav-icon">💊</span>
+        <span>Meds & Appointments</span>
+        </a>
+    </nav>
+</aside>
+<label for="sidebar-toggle" class="sidebar-overlay"></label>
 
     <div class="main-content container-lg">
     <h2 style="color: #2f4156;">Today's date is: <span id="datetime-display"></span></h2>
@@ -67,6 +88,7 @@
     setInterval(displayDateTime, 1000);
 </script>
 
+
 <!-- Top right icons -->
 <div class="topbar">
   <div style="margin-left: 4.5rem;"></div> <!-- spacer for hamburger -->
@@ -85,29 +107,25 @@
     <div class="card container-lg" style="background-color: #cfdde5;">
   <div class="card-body" >
     <h3 style="color: #2f4156;">Add your symptoms here</h3>
-    <select id="select-symptom">
-  <option value="" disabled selected>Type of symptom</option>
-  <option value="Headache">Headache</option>
-  <option value="Dizziness">Dizziness</option>
-  <option value="Tummy ache">Tummy ache</option>
+    <select id="select-symptom" style="color: #2f4156;">
+  <option value="" disabled selected style="color: #2f4156;">Type of symptom</option>
+  <option value="Headache" style="color: #2f4156;">Headache</option>
+  <option value="Dizziness" style="color: #2f4156;">Dizziness</option>
+  <option value="Tummy ache" style="color: #2f4156;">Tummy ache</option>
 </select>
 
-<select id="select-intensity">
-  <option value="" disabled selected>Intensity</option>
-  <option value="1">☺️ 1 - Really low</option>
-  <option value="2">🙂 2 - Low</option>
-  <option value="3">🫤 3 - Mid</option>
-  <option value="4">🙁 4 - High</option>
-  <option value="5">😟 5 - Really high</option>
+<select id="select-intensity" style="color: #2f4156;">
+  <option value="" disabled selected style="color: #2f4156;">Intensity</option>
+  <option value="1" style="color: #2f4156;">☺️ 1 - Really low</option>
+  <option value="2" style="color: #2f4156;">🙂 2 - Low</option>
+  <option value="3" style="color: #2f4156;">🫤 3 - Mid</option>
+  <option value="4" style="color: #2f4156;">🙁 4 - High</option>
+  <option value="5" style="color: #2f4156;">😟 5 - Really high</option>
 </select>
 
 <input type="datetime-local" id="select-time" />
 <textarea id="select-notes" placeholder="Add notes (optional)" rows="3"></textarea>
-<button id="save-btn" onclick="addEntry()">Save symptom</button>
-
-    </div>
-  </div>
-    </div>
+<button id="save-btn" onclick="addEntry()" >Save symptom</button>
 
 <div class="col-12">
         <div class="card">
@@ -120,6 +138,12 @@
           </div>
         </div>
       </div>
+
+    </div>
+  </div>
+    </div>
+
+
 
 </div>
 
