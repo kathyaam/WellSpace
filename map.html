@@ -1,0 +1,419 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WellSpace - Sensory Map</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="map-styles.css"> 
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" 
+    />  
+    <script 
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"> 
+    </script> 
+
+</head>
+
+
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <button class="menu-btn" id="menuBtn">
+                <div class="menu-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+            
+            <div class="header-actions">
+                <button class="icon-btn" aria-label="Profile">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                    </svg>
+                </button>
+                <button class="icon-btn" aria-label="Notifications">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2zm-2 1H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5v6z"/>
+                    </svg>
+                </button>
+            </div>
+        </header>
+
+        <!-- Sidebar Menu -->
+        <div class="sidebar-menu" id="sidebarMenu">
+            <div class="sidebar-header">
+                <h2 class="sidebar-title">WellSpace</h2>
+                <button class="close-btn" id="closeBtn">&times;</button>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item">
+                    <span class="nav-icon">🏠</span>
+                    <span>Home page</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <span class="nav-icon">📊</span>
+                    <span>Symptom Tracing</span>
+                </a>
+                <a href="#" class="nav-item active">
+                    <span class="nav-icon">🗺️</span>
+                    <span>Map</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <span class="nav-icon">💊</span>
+                    <span>Meds & Appointments</span>
+                </a>
+            </nav>
+        </div>
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+        <!-- Map Section Grid -->
+        <div class="map-grid">
+            <!-- Medical Centers Panel -->
+            <div class="medical-centers-panel">
+                <h2 class="panel-title">Medical centers close</h2>
+                                    <div class="centers-list" id="centersList">
+                                        <div class="center-item">
+                        <div class="center-dot"></div>
+                        <div class="center-info">
+                            <div class="center-name">Hospital Santo Tomás</div>
+                            <div class="center-distance" id="distance-santo-tomas">Calculating...</div>
+                            <div class="center-specialty">General Hospital</div>
+                        </div>
+                    </div>
+
+                    <div class="center-item">
+                        <div class="center-dot"></div>
+                        <div class="center-info">
+                            <div class="center-name">Hospital Punta Pacífica</div>
+                            <div class="center-distance" id="distance-punta-pacifica">Calculating...</div>
+                            <div class="center-specialty">Private Hospital</div>
+                        </div>
+                    </div>
+
+                    <div class="center-item">
+                        <div class="center-dot"></div>
+                        <div class="center-info">
+                            <div class="center-name">Hospital Nacional</div>
+                            <div class="center-distance" id="distance-nacional">Calculating...</div>
+                            <div class="center-specialty">Specialized Care</div>
+                        </div>
+                    </div>
+
+                    <div class="center-item">
+                        <div class="center-dot"></div>
+                        <div class="center-info">
+                            <div class="center-name">Hospital San Fernando</div>
+                            <div class="center-distance" id="distance-san-fernando">Calculating...</div>
+                            <div class="center-specialty">Private Hospital</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Map Container -->
+            <div class="map-container">
+                <div id="map" class="map"></div>
+            </div>
+
+            <!-- Places Filter Panel -->
+            <div class="places-panel">
+                <h2 class="panel-title">Places</h2>
+                <div class="places-selector">
+                    <select id="placesFilter" class="places-dropdown">
+                        <option value="">Choose you want</option>
+                        <option value="restaurants">🍽️ Restaurants</option>
+                        <option value="parks">🌳 Parks</option>
+                        <option value="museums">🏛️ Museums</option>
+                        <option value="cafes">☕ Cafés</option>
+                        <option value="libraries">📚 Libraries</option>
+                        <option value="shopping">🛍️ Shopping Centers</option>
+                        <option value="cinemas">🎬 Cinemas</option>
+                        <option value="theaters">🎭 Theaters</option>
+                    </select>
+                </div>
+                
+                <!-- Sensory Filters -->
+                <div class="sensory-filters">
+                    <h3 class="filter-title">Sensory Filters</h3>
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="filterNoise" checked>
+                        <span>🔇 Low Noise</span>
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="filterLight" checked>
+                        <span>💡 Soft Lighting</span>
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="filterCrowd" checked>
+                        <span>👥 Less Crowded</span>
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="filterScent">
+                        <span>🌸 Low Scent</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Sidebar menu toggle
+        const menuBtn = document.getElementById('menuBtn');
+        const closeBtn = document.getElementById('closeBtn');
+        const sidebarMenu = document.getElementById('sidebarMenu');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+        function openMenu() {
+            sidebarMenu.classList.add('active');
+            sidebarOverlay.classList.add('active');
+        }
+
+        function closeMenu() {
+            sidebarMenu.classList.remove('active');
+            sidebarOverlay.classList.remove('active');
+        }
+
+        menuBtn.addEventListener('click', openMenu);
+        closeBtn.addEventListener('click', closeMenu);
+        sidebarOverlay.addEventListener('click', closeMenu);
+
+                // Initialize map FIRST
+        const map = L.map('map').setView([8.9824, -79.5199], 13);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(map);
+
+        // ADD THE FUNCTION HERE
+        function getActiveFilters() {
+            return {
+                lowNoise: document.getElementById("filterNoise").checked,
+                softLighting: document.getElementById("filterLight").checked,
+                lessCrowded: document.getElementById("filterCrowd").checked,
+                lowScent: document.getElementById("filterScent").checked
+            };
+        }
+
+        // THEN your filter logic
+        const placesFilter = document.getElementById('placesFilter');
+
+        let currentMarkers = [];
+
+    placesFilter.addEventListener('change', function() {
+        const selectedPlace = this.value;
+
+        // Remove old markers
+        currentMarkers.forEach(marker => map.removeLayer(marker));
+        currentMarkers = [];
+
+        if (!selectedPlace) return;
+
+        const placesData = {
+            parks: [
+            {
+            name: "Parque Omar",
+            coords: [8.9996, -79.5090],
+            lowNoise: true,
+            softLighting: true,
+            lessCrowded: true,
+            lowScent: true
+            },
+            {
+            name: "Cinta Costera",
+            coords: [8.9723, -79.5297],
+            lowNoise: false,
+            softLighting: true,
+            lessCrowded: false,
+            lowScent: true
+            },
+            {
+            name: "Parque Natural Metropolitano",
+            coords: [8.9971, -79.5474],
+            lowNoise: true,
+            softLighting: true,
+            lessCrowded: true,
+            lowScent: true
+            }
+            ],
+
+            restaurants: [
+            {
+            name: "Mahalo Cocina y Jardin",
+            coords: [8.9812, -79.5187],
+            lowNoise: true,
+            softLighting: true,
+            lessCrowded: true,
+            lowScent: false
+            },
+            {
+            name: "Mentiritas Blancas",
+            coords: [8.9804, -79.5198],
+            lowNoise: true,
+            softLighting: true,
+            lessCrowded: true,
+            lowScent: true
+            },
+            {
+            name: "Riba-Smith Cafe",
+            coords: [9.0105, -79.5321],
+            lowNoise: false,
+            softLighting: true,
+            lessCrowded: false,
+            lowScent: true
+            }
+            ],
+        
+            museums: [
+            {
+            name: "Biomuseo",
+            coords: [8.9526, -79.5675],
+            lowNoise: true,
+            softLighting: true,
+            lessCrowded: true,
+            lowScent: true
+            },
+            {
+            name: "Museo del Canal Interoceanico",
+            coords: [8.9506, -79.5349],
+            lowNoise: true,
+            softLighting: true,
+            lessCrowded: false,
+            lowScent: true
+            },
+            {
+            name: "Museo de la Biodiversidad",
+            coords: [8.9526, -79.5675],
+            lowNoise: true,
+            softLighting: true,
+            lessCrowded: true,
+            lowScent: true
+            }
+            ],
+
+            shopping: [
+            {
+            name: "Albrook Mall",
+            coords: [8.9752, -79.5514],
+            lowNoise: false,
+            softLighting: false,
+            lessCrowded: false,
+            lowScent: false
+            },
+            {
+            name: "Multiplaza Pacific",
+            coords: [8.9825, -79.5073],
+            lowNoise: false,
+            softLighting: true,
+            lessCrowded: false,
+            lowScent: false
+            },
+            {
+            name: "AltaPlaza Mall",
+            coords: [9.0215, -79.5324],
+            lowNoise: true,
+            softLighting: true,
+            lessCrowded: true,
+            lowScent: true
+            }
+            ]  
+        };
+
+        const filters = getActiveFilters();
+
+        const places = (placesData[selectedPlace] || []).filter(place => {
+            if (filters.lowNoise && !place.lowNoise) return false;
+            if (filters.softLighting && !place.softLighting) return false;
+            if (filters.lessCrowded && !place.lessCrowded) return false;
+            if (filters.lowScent && !place.lowScent) return false;
+            return true;
+        });
+
+        places.forEach(place => {
+            const marker = L.marker(place.coords)
+                .addTo(map)
+                .bindPopup(`<b>${place.name}</b><br>Sensory-friendly location`);
+
+            currentMarkers.push(marker);
+        });
+    });
+
+        // Sensory filters
+        const filterCheckboxes = document.querySelectorAll('.checkbox-label input[type="checkbox"]');
+
+        filterCheckboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', () => {
+                 placesFilter.dispatchEvent(new Event('change'));
+    });
+});
+
+        filterCheckboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', () => {
+                placesFilter.dispatchEvent(new Event('change'));
+    });
+});
+
+// Medical center coordinates
+const hospitals = {
+    "distance-santo-tomas": [8.9663, -79.5361],
+    "distance-punta-pacifica": [8.9826, -79.5070],
+    "distance-nacional": [8.9717, -79.5350],
+    "distance-san-fernando": [8.9820, -79.5206]
+};
+
+// Distance formula
+function calculateDistance(lat1, lon1, lat2, lon2) {
+    const R = 6371; // km
+    const dLat = (lat2 - lat1) * Math.PI / 180;
+    const dLon = (lon2 - lon1) * Math.PI / 180;
+
+    const a =
+        Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+        Math.cos(lat1 * Math.PI / 180) *
+        Math.cos(lat2 * Math.PI / 180) *
+        Math.sin(dLon / 2) * Math.sin(dLon / 2);
+
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+    return R * c;
+}
+
+// Get user location
+if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+
+        const userLat = position.coords.latitude;
+        const userLon = position.coords.longitude;
+
+        for (let id in hospitals) {
+
+            const hospital = hospitals[id];
+            const distance = calculateDistance(
+                userLat,
+                userLon,
+                hospital[0],
+                hospital[1]
+            );
+
+            const element = document.getElementById(id);
+
+            if (element) {
+                element.textContent = distance.toFixed(1) + " km away";
+            }
+        }
+
+    }, function() {
+
+        // If location denied
+        document.querySelectorAll(".center-distance").forEach(el => {
+            el.textContent = "Location unavailable";
+        });
+
+    });
+}
+    </script>
+</body>
+</html>
