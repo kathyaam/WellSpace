@@ -1,0 +1,222 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Wobble animation for the letter w/ heart emoji in contact us */
+@keyframes whereinmnl-wobble {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-10deg); }
+    75% { transform: rotate(10deg); }
+}
+
+/* ── Paleta ── */
+:root {
+    --bg:         #eae6df;
+    --navy:       #1b3a4b;
+    --teal:       #2d5f6b;
+    --teal-hover: #1e4a55;
+    --muted:      #4a6270;
+    --white:      #ffffff;
+}
+ 
+/* ── Base ── */
+* {
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+ 
+body {
+    background-color: var(--bg);
+    color: var(--navy);
+    margin: 0;
+    padding: 0;
+}
+
+.btn-hero:hover {
+    background-color: var(--navy);
+    color: #fff;
+}
+
+.wobble-emoji {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.wobble-emoji:hover {
+    animation: whereinmnl-wobble 0.5s ease;
+}
+
+/* Navbar */
+.navbar {
+    background-color: var(--teal) !important;
+    border-radius: 50px;
+    margin: 14px 20px;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+}
+ 
+.navbar-brand {
+    color: var(--white) !important;
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.nav-link {
+    color: rgba(7, 30, 40, 0.88) !important;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: color 0.2s;
+}
+
+.navbar-brand img {
+    filter: brightness(0) invert(1);
+    border-radius: 50%;
+}
+ 
+.nav-link {
+    color: rgba(196, 193, 193, 0.88) !important;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: color 0.2s;
+}
+ 
+.nav-link:hover,
+.nav-link.active {
+    color: var(--white) !important;
+}
+
+.card-title {
+    color: rgba(21, 67, 114, 0.88);
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.card-footer {
+    background-color: rgba(74, 124, 140, 0.1) !important;
+    border-top: 1px solid rgba(45, 95, 107, 0.1) !important;
+    border-radius: 0 0 16px 16px !important;
+}
+
+/* Botón Sign Up */
+button[type="button"] {
+    background-color: var(--teal) !important;
+    color: var(--white) !important;
+    border: none !important;
+    border-radius: 50px !important;
+    padding: 12px 48px !important;
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+    cursor: pointer;
+    transition: background-color 0.25s, transform 0.15s;
+    display: block !important;
+    width: auto !important;
+    min-width: 200px;
+    margin: 0 auto !important;
+}
+
+/* "Already have an account?" */
+p.text-center {
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+a.link-underline-primary {
+    color: var(--teal) !important;
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+/* ABOUT US */
+h1.display-5 {
+    color: var(--navy);
+    font-weight: 700;
+    font-size: 2.2rem;
+}
+ 
+p.text-center.mt-3 {
+    color: var(--muted);
+    font-size: 0.97rem;
+    line-height: 1.85;
+    max-width: 620px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 20px;
+}
+
+/* CONTACT — CARD */
+.card {
+    border: none !important;
+    background-color: var(--white) !important;
+    box-shadow: 0 8px 30px rgba(27, 58, 75, 0.1) !important;
+}
+ 
+.card-header {
+    background-color: var(--teal) !important;
+    border-bottom: none !important;
+    border-radius: 16px 16px 0 0 !important;
+    padding: 18px !important;
+}
+ 
+.card-title {
+    color: var(--teal) !important;
+    font-weight: 700;
+    font-size: 1rem;
+}
+ 
+.card-text {
+    color: var(--muted);
+    font-size: 0.93rem;
+}
+ 
+.card-body a[href^="mailto"] {
+    color: var(--teal);
+    font-weight: 600;
+    text-decoration: none;
+}
+ 
+.card-body a[href^="mailto"]:hover {
+    text-decoration: underline;
+}
+ 
+.card-footer {
+    background-color: #f0ece6 !important;
+    border-top: 1px solid rgba(45, 95, 107, 0.1) !important;
+    border-radius: 0 0 16px 16px !important;
+}
+ 
+.card-footer a {
+    color: var(--teal) !important;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+}
+ 
+.card-footer a:hover {
+    text-decoration: underline;
+}
+
+/* FOOTER */
+footer.bg-light {
+    background-color: var(--navy) !important;
+    border-top: none !important;
+}
+ 
+footer .text-dark {
+    color: var(--white) !important;
+}
+ 
+footer p {
+    color: var(--white) !important;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 1px;
+}
+ 
+footer small {
+    color: rgba(255, 255, 255, 0.6) !important;
+    font-size: 0.8rem;
+}
