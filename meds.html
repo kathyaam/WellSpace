@@ -20,7 +20,6 @@
                     <span></span>
                 </div>
             </button>
-            
             <div class="header-actions">
                 <button class="icon-btn" aria-label="Profile">
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -50,11 +49,11 @@
                     <span class="nav-icon">📊</span>
                     <span>Symptom Tracking</span>
                 </a>
-                <a href="#" class="nav-item">
+                <a href="map.html" class="nav-item">
                     <span class="nav-icon">🗺️</span>
                     <span>Map</span>
                 </a>
-                <a href="#" class="nav-item active">
+                <a href="meds.html" class="nav-item active">
                     <span class="nav-icon">💊</span>
                     <span>Meds & Appointments</span>
                 </a>
@@ -67,7 +66,6 @@
             <!-- Medications Section -->
             <div class="meds-section">
                 <h2 class="section-header">List of meds</h2>
-                
                 <div class="meds-table">
                     <div class="table-header">
                         <div>Name</div>
@@ -75,228 +73,66 @@
                         <div>Due Date</div>
                         <div>Notes</div>
                     </div>
-                    
-                    <div class="table-row">
-                        <div class="med-name">
-                            <div class="med-name-input-wrapper">
-                                <input type="text" class="date-input med-name-input" value="Misoprostol" style="width: 100%;">
-                                <div class="med-name-tooltip"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <select class="date-input">
-                                <option>Select status</option>
-                                <option>Taken</option>
-                                <option selected>Missed</option>
-                                <option>Pending</option>
-                            </select>
-                        </div>
-                        <div>
-                            <input type="date" class="date-input" value="2025-03-04">
-                        </div>
-                        <div>
-                            <button class="notes-btn" data-medication="Misoprostol">📝</button>
-                        </div>
-                    </div>
-                    
-                    <div class="table-row">
-                        <div class="med-name">
-                            <div class="med-name-input-wrapper">
-                                <input type="text" class="date-input med-name-input" value="Pending Med" style="width: 100%;">
-                                <div class="med-name-tooltip"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <select class="date-input">
-                                <option>Select status</option>
-                                <option>Taken</option>
-                                <option>Missed</option>
-                                <option selected>Pending</option>
-                            </select>
-                        </div>
-                        <div>
-                            <input type="date" class="date-input" value="2025-03-04">
-                        </div>
-                        <div>
-                            <button class="notes-btn" data-medication="Pending Med">📝</button>
-                        </div>
-                    </div>
-                    
-                    <!-- Empty rows for adding more -->
-                    <div class="table-row">
-                        <div class="med-name">
-                            <div class="med-name-input-wrapper">
-                                <input type="text" class="date-input med-name-input" placeholder="Medication name" style="width: 100%;">
-                                <div class="med-name-tooltip"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <select class="date-input">
-                                <option>Select status</option>
-                                <option>Taken</option>
-                                <option>Missed</option>
-                                <option>Pending</option>
-                            </select>
-                        </div>
-                        <div>
-                            <input type="date" class="date-input">
-                        </div>
-                        <div>
-                            <button class="notes-btn">📝</button>
-                        </div>
-                    </div>
-                    
-                    <div class="table-row">
-                        <div class="med-name">
-                            <div class="med-name-input-wrapper">
-                                <input type="text" class="date-input med-name-input" placeholder="Medication name" style="width: 100%;">
-                                <div class="med-name-tooltip"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <select class="date-input">
-                                <option>Select status</option>
-                                <option>Taken</option>
-                                <option>Missed</option>
-                                <option>Pending</option>
-                            </select>
-                        </div>
-                        <div>
-                            <input type="date" class="date-input">
-                        </div>
-                        <div>
-                            <button class="notes-btn">📝</button>
-                        </div>
-                    </div>
-                    
-                    <div class="table-row">
-                        <div class="med-name">
-                            <div class="med-name-input-wrapper">
-                                <input type="text" class="date-input med-name-input" placeholder="Medication name" style="width: 100%;">
-                                <div class="med-name-tooltip"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <select class="date-input">
-                                <option>Select status</option>
-                                <option>Taken</option>
-                                <option>Missed</option>
-                                <option>Pending</option>
-                            </select>
-                        </div>
-                        <div>
-                            <input type="date" class="date-input">
-                        </div>
-                        <div>
-                            <button class="notes-btn">📝</button>
-                        </div>
-                    </div>
-                    
-                    <div class="table-row">
-                        <div class="med-name">
-                            <div class="med-name-input-wrapper">
-                                <input type="text" class="date-input med-name-input" placeholder="Medication name" style="width: 100%;">
-                                <div class="med-name-tooltip"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <select class="date-input">
-                                <option>Select status</option>
-                                <option>Taken</option>
-                                <option>Missed</option>
-                                <option>Pending</option>
-                            </select>
-                        </div>
-                        <div>
-                            <input type="date" class="date-input">
-                        </div>
-                        <div>
-                            <button class="notes-btn">📝</button>
-                        </div>
-                    </div>
+                    <!-- Rows rendered by JS from localStorage -->
+                    <div id="medsTableBody"></div>
                 </div>
-                
-                <button class="add-row-btn">+ Add medication</button>
-                
-                <a href="#" class="link-button">Where to buy meds →</a>
+                <button class="add-row-btn" id="addMedBtn">+ Add medication</button>
             </div>
 
-            <!-- Calendar Section -->
-            <div class="calendar-section">
-                <div class="calendar-header">
-                    <h2 class="calendar-title">List of appointments</h2>
-                    
-                    <div class="calendar-toggle">
-                        <button class="toggle-btn">monthly</button>
-                        <button class="toggle-btn active">daily</button>
+            <!-- Calendar + All Appointments wrapper -->
+            <div class="calendar-and-all-wrapper">
+
+                <!-- Calendar Section -->
+                <div class="calendar-section">
+                    <div class="calendar-header">
+                        <h2 class="calendar-title">List of appointments</h2>
+                        <div class="calendar-toggle">
+                            <button class="toggle-btn" id="toggleMonthly">monthly</button>
+                            <button class="toggle-btn active" id="toggleDaily">daily</button>
+                        </div>
+                    </div>
+
+                    <div class="calendar-grid" id="calendarGrid" style="display:none;">
+                        <div class="calendar-day-header weekend">Su</div>
+                        <div class="calendar-day-header weekday">Mo</div>
+                        <div class="calendar-day-header weekday">Tu</div>
+                        <div class="calendar-day-header weekday">We</div>
+                        <div class="calendar-day-header weekday">Th</div>
+                        <div class="calendar-day-header weekday">Fr</div>
+                        <div class="calendar-day-header weekend">Sa</div>
+                        <!-- Days filled by JS -->
+                    </div>
+
+                    <div class="daily-view active" id="dailyView">
+                        <div class="daily-view-date" id="dailyViewDate">Today's Appointments</div>
+                        <div id="appointmentsList"></div>
+                    </div>
+
+                    <button class="add-appointment-btn" id="addAppointmentBtn">Add appointment</button>
+                </div>
+
+                <!-- All Appointments Panel -->
+                <div class="all-appointments-panel">
+                    <h2 class="panel-title-all">📋 All Saved Appointments</h2>
+                    <div id="allAppointmentsList">
+                        <div class="no-appointments">
+                            <div class="no-appointments-icon">📅</div>
+                            <div>No appointments saved yet</div>
+                        </div>
                     </div>
                 </div>
-                
-                <div class="calendar-grid">
-                    <!-- Day headers -->
-                    <div class="calendar-day-header weekend">Su</div>
-                    <div class="calendar-day-header weekday">Mo</div>
-                    <div class="calendar-day-header weekday">Tu</div>
-                    <div class="calendar-day-header weekday">We</div>
-                    <div class="calendar-day-header weekday">Th</div>
-                    <div class="calendar-day-header weekday">Fr</div>
-                    <div class="calendar-day-header weekend">Sa</div>
-                    
-                    <!-- Days -->
-                    <div class="calendar-day weekday"></div>
-                    <div class="calendar-day weekday">1</div>
-                    <div class="calendar-day weekend">2</div>
-                    
-                    <div class="calendar-day weekend">3</div>
-                    <div class="calendar-day weekday">4</div>
-                    <div class="calendar-day weekday">5</div>
-                    <div class="calendar-day weekday">6</div>
-                    <div class="calendar-day weekday">7</div>
-                    <div class="calendar-day weekday">8</div>
-                    <div class="calendar-day weekend">9</div>
-                    
-                    <div class="calendar-day weekend">10</div>
-                    <div class="calendar-day weekday">11</div>
-                    <div class="calendar-day weekday">12</div>
-                    <div class="calendar-day weekday">13</div>
-                    <div class="calendar-day weekday">14</div>
-                    <div class="calendar-day weekday">15</div>
-                    <div class="calendar-day weekend">16</div>
-                    
-                    <div class="calendar-day weekend">17</div>
-                    <div class="calendar-day weekday">18</div>
-                    <div class="calendar-day weekday">19</div>
-                    <div class="calendar-day weekday">20</div>
-                    <div class="calendar-day weekday">21</div>
-                    <div class="calendar-day weekday">22</div>
-                    <div class="calendar-day weekend">23</div>
-                    
-                    <div class="calendar-day weekend">24</div>
-                    <div class="calendar-day weekday">25</div>
-                    <div class="calendar-day weekday">26</div>
-                    <div class="calendar-day weekday">27</div>
-                    <div class="calendar-day weekday">28</div>
-                    <div class="calendar-day weekday">29</div>
-                    <div class="calendar-day weekend">30</div>
-                    
-                    <div class="calendar-day weekend">31</div>
-                </div>
-                
-                <div class="daily-view" id="dailyView">
-                    <div class="daily-view-date" id="dailyViewDate">Today's Appointments</div>
-                    <div id="appointmentsList"></div>
-                </div>
-                
-                <button class="add-appointment-btn" id="addAppointmentBtn">Add appointment</button>
+
             </div>
 
-            <!-- Recommendations Section -->
+            <!-- AI Recommendations Section -->
             <div class="recommendations-section">
                 <h2 class="recommendations-title">AI Recommendations</h2>
                 <div class="recommendation-chat">
                     <div id="chatMessages" class="chat-messages">
                         <div class="ai-message">
-                            Hello! I'm your AI health assistant. Type "send recommendations" and I'll analyze your medications and symptoms to provide personalized treatment suggestions.
+                            Hello! I'm your WellSpace AI health assistant. 🩺<br><br>
+                            <strong>Important:</strong> I'm not a replacement for your doctor — I work alongside the information your doctor has already given you. My role is to help you <em>monitor your medication habits</em>, provide general wellness tips, and remind you of good practices based on what you've logged here.<br><br>
+                            Type <strong>"send recommendations"</strong> and I'll analyze your saved medications and give you personalized tips. You can also ask me general questions about medications or health habits.
                         </div>
                     </div>
                     <div class="chat-input-container">
@@ -320,22 +156,12 @@
                 <div class="notes-modal-body">
                     <div class="appointment-form-group">
                         <label for="appointmentTitle">Appointment Title *</label>
-                        <input 
-                            type="text" 
-                            id="appointmentTitle" 
-                            class="appointment-input" 
-                            placeholder="e.g., Doctor's Appointment, Blood Test"
-                            required>
+                        <input type="text" id="appointmentTitle" class="appointment-input" placeholder="e.g., Doctor's Appointment, Blood Test" required>
                     </div>
-                    
                     <div class="appointment-form-group">
                         <label>Time *</label>
                         <div class="appointment-time-group">
-                            <input 
-                                type="time" 
-                                id="appointmentTime" 
-                                class="appointment-input"
-                                required>
+                            <input type="time" id="appointmentTime" class="appointment-input" required>
                             <select id="appointmentDuration" class="appointment-input">
                                 <option value="15">15 minutes</option>
                                 <option value="30" selected>30 minutes</option>
@@ -346,13 +172,9 @@
                             </select>
                         </div>
                     </div>
-                    
                     <div class="appointment-form-group">
                         <label for="appointmentDesc">Description (Optional)</label>
-                        <textarea 
-                            id="appointmentDesc" 
-                            class="appointment-textarea" 
-                            placeholder="Add any notes about this appointment..."></textarea>
+                        <textarea id="appointmentDesc" class="appointment-textarea" placeholder="Add any notes about this appointment..."></textarea>
                     </div>
                 </div>
                 <div class="notes-modal-footer">
@@ -373,10 +195,7 @@
                     <button class="notes-modal-close" id="closeNotesModal">&times;</button>
                 </div>
                 <div class="notes-modal-body">
-                    <textarea 
-                        class="notes-textarea" 
-                        id="notesTextarea" 
-                        placeholder="Add notes about this medication... 
+                    <textarea class="notes-textarea" id="notesTextarea" placeholder="Add notes about this medication...
 
 Examples:
 - Take with food
@@ -396,340 +215,262 @@ Examples:
     </div>
 
     <script>
-        // Sidebar menu toggle
+        // ===== SIDEBAR =====
         const menuBtn = document.getElementById('menuBtn');
         const closeBtn = document.getElementById('closeBtn');
         const sidebarMenu = document.getElementById('sidebarMenu');
         const sidebarOverlay = document.getElementById('sidebarOverlay');
+        menuBtn.addEventListener('click', () => { sidebarMenu.classList.add('active'); sidebarOverlay.classList.add('active'); });
+        closeBtn.addEventListener('click', () => { sidebarMenu.classList.remove('active'); sidebarOverlay.classList.remove('active'); });
+        sidebarOverlay.addEventListener('click', () => { sidebarMenu.classList.remove('active'); sidebarOverlay.classList.remove('active'); });
 
-        function openMenu() {
-            sidebarMenu.classList.add('active');
-            sidebarOverlay.classList.add('active');
-        }
-
-        function closeMenu() {
-            sidebarMenu.classList.remove('active');
-            sidebarOverlay.classList.remove('active');
-        }
-
-        menuBtn.addEventListener('click', openMenu);
-        closeBtn.addEventListener('click', closeMenu);
-        sidebarOverlay.addEventListener('click', closeMenu);
-
-        // Medication name tooltips
-        function setupMedNameTooltips() {
-            document.querySelectorAll('.med-name-input').forEach(input => {
-                const wrapper = input.closest('.med-name-input-wrapper');
-                if (!wrapper) return;
-                
-                const tooltip = wrapper.querySelector('.med-name-tooltip');
-                if (!tooltip) return;
-                
-                // Show tooltip on hover/focus
-                input.addEventListener('mouseenter', () => {
-                    tooltip.textContent = input.value || 'No name entered';
-                    tooltip.classList.add('show');
-                });
-                
-                input.addEventListener('focus', () => {
-                    tooltip.textContent = input.value || 'No name entered';
-                    tooltip.classList.add('show');
-                });
-                
-                // Hide tooltip
-                input.addEventListener('mouseleave', () => {
-                    tooltip.classList.remove('show');
-                });
-                
-                input.addEventListener('blur', () => {
-                    tooltip.classList.remove('show');
-                });
-                
-                // Update tooltip when typing
-                input.addEventListener('input', () => {
-                    tooltip.textContent = input.value || 'No name entered';
-                });
+        // ===== LOCALSTORAGE HELPERS =====
+        function saveMeds() {
+            const rows = document.querySelectorAll('#medsTableBody .table-row');
+            const data = [];
+            rows.forEach(row => {
+                const name = row.querySelector('.med-name-input').value.trim();
+                const status = row.querySelector('select').value;
+                const date = row.querySelector('input[type="date"]').value;
+                const noteBtn = row.querySelector('.notes-btn');
+                const note = noteBtn ? (noteBtn.dataset.note || '') : '';
+                data.push({ name, status, date, note });
             });
+            localStorage.setItem('wellspace_meds', JSON.stringify(data));
         }
 
-        // Initialize tooltips for existing inputs
-        setupMedNameTooltips();
+        function loadMeds() {
+            const raw = localStorage.getItem('wellspace_meds');
+            return raw ? JSON.parse(raw) : [];
+        }
 
-        // Calendar day hover effects
-        const calendarDays = document.querySelectorAll('.calendar-day');
-        let selectedCalendarDay = null;
+        function saveAppointments() {
+            localStorage.setItem('wellspace_appointments', JSON.stringify(appointmentsData));
+        }
 
-        calendarDays.forEach(day => {
-            day.addEventListener('click', function() {
-                // Remove previous selection
-                calendarDays.forEach(d => d.classList.remove('has-appointment'));
-                // Add selection to clicked day
-                this.classList.add('has-appointment');
-                selectedCalendarDay = this;
-            });
-        });
+        function loadAppointments() {
+            const raw = localStorage.getItem('wellspace_appointments');
+            return raw ? JSON.parse(raw) : {};
+        }
 
-        // Add medication button - adds new row to table
-        const addMedBtn = document.querySelector('.add-row-btn');
-        const medsTable = document.querySelector('.meds-table');
-        
-        addMedBtn.addEventListener('click', function() {
-            // Create new row
-            const newRow = document.createElement('div');
-            newRow.className = 'table-row';
-            newRow.innerHTML = `
+        // ===== APPOINTMENTS DATA =====
+        let appointmentsData = loadAppointments();
+
+        // ===== RENDER MEDS TABLE =====
+        const medsTableBody = document.getElementById('medsTableBody');
+
+        function createMedRow(data = {}) {
+            const row = document.createElement('div');
+            row.className = 'table-row';
+
+            const name = data.name || '';
+            const status = data.status || 'Select status';
+            const date = data.date || '';
+            const note = data.note || '';
+
+            row.innerHTML = `
                 <div class="med-name">
                     <div class="med-name-input-wrapper">
-                        <input type="text" class="date-input med-name-input" placeholder="Medication name" style="width: 100%;">
+                        <input type="text" class="date-input med-name-input" placeholder="Medication name" value="${name}" style="width:100%;">
                         <div class="med-name-tooltip"></div>
                     </div>
                 </div>
                 <div>
                     <select class="date-input">
-                        <option>Select status</option>
-                        <option>Taken</option>
-                        <option>Missed</option>
-                        <option>Pending</option>
+                        <option ${status === 'Select status' ? 'selected' : ''}>Select status</option>
+                        <option ${status === 'Taken' ? 'selected' : ''}>Taken</option>
+                        <option ${status === 'Missed' ? 'selected' : ''}>Missed</option>
+                        <option ${status === 'Pending' ? 'selected' : ''}>Pending</option>
                     </select>
                 </div>
                 <div>
-                    <input type="date" class="date-input">
+                    <input type="date" class="date-input" value="${date}">
                 </div>
                 <div>
-                    <button class="notes-btn">📝</button>
+                    <button class="notes-btn ${note ? 'has-notes' : ''}" data-note="${note.replace(/"/g, '&quot;')}">📝</button>
                 </div>
             `;
-            
-            // Insert before the last row (which should remain empty)
-            medsTable.appendChild(newRow);
-            
-            // Setup tooltips for new input
-            setupMedNameTooltips();
-            
-            // Focus on the medication name input
-            newRow.querySelector('input[type="text"]').focus();
-            
-            // Attach notes button event to new button
-            const newNotesBtn = newRow.querySelector('.notes-btn');
-            attachNotesButtonEvent(newNotesBtn);
+
+            // Auto-save on any change
+            row.querySelectorAll('input, select').forEach(el => {
+                el.addEventListener('change', saveMeds);
+                el.addEventListener('input', saveMeds);
+            });
+
+            // Tooltip
+            const input = row.querySelector('.med-name-input');
+            const tooltip = row.querySelector('.med-name-tooltip');
+            input.addEventListener('mouseenter', () => { tooltip.textContent = input.value || 'No name entered'; tooltip.classList.add('show'); });
+            input.addEventListener('focus', () => { tooltip.textContent = input.value || 'No name entered'; tooltip.classList.add('show'); });
+            input.addEventListener('mouseleave', () => tooltip.classList.remove('show'));
+            input.addEventListener('blur', () => tooltip.classList.remove('show'));
+            input.addEventListener('input', () => { tooltip.textContent = input.value || 'No name entered'; });
+
+            // Notes button
+            const notesBtn = row.querySelector('.notes-btn');
+            notesBtn.addEventListener('click', () => openNotesModal(notesBtn));
+
+            return row;
+        }
+
+        function renderMedsTable() {
+            medsTableBody.innerHTML = '';
+            const saved = loadMeds();
+
+            if (saved.length === 0) {
+                // Render 4 empty rows by default (like original)
+                for (let i = 0; i < 4; i++) {
+                    medsTableBody.appendChild(createMedRow());
+                }
+            } else {
+                saved.forEach(d => medsTableBody.appendChild(createMedRow(d)));
+            }
+        }
+
+        renderMedsTable();
+
+        // Add med row button
+        document.getElementById('addMedBtn').addEventListener('click', () => {
+            medsTableBody.appendChild(createMedRow());
+            saveMeds();
         });
 
-        // Notes Modal Functionality
+        // ===== NOTES MODAL =====
         const notesModal = document.getElementById('notesModal');
         const notesTextarea = document.getElementById('notesTextarea');
         const modalMedName = document.getElementById('modalMedName');
-        const closeNotesModal = document.getElementById('closeNotesModal');
-        const cancelNotesBtn = document.getElementById('cancelNotesBtn');
-        const saveNotesBtn = document.getElementById('saveNotesBtn');
         const charCount = document.getElementById('charCount');
+        let currentNotesBtn = null;
 
-        // Store notes data
-        const notesData = {};
-        let currentMedicationButton = null;
-
-        // Character counter
-        notesTextarea.addEventListener('input', function() {
-            const length = this.value.length;
-            charCount.textContent = length;
-            
-            if (length > 500) {
-                this.value = this.value.substring(0, 500);
-                charCount.textContent = 500;
-            }
-        });
-
-        // Function to open notes modal
-        function openNotesModal(button) {
-            currentMedicationButton = button;
-            const medicationName = button.getAttribute('data-medication') || 
-                                   button.closest('.table-row').querySelector('.med-name-input').value ||
-                                   'Unnamed Medication';
-            
-            modalMedName.textContent = medicationName;
-            
-            // Load existing notes if any
-            const existingNotes = notesData[medicationName] || '';
-            notesTextarea.value = existingNotes;
-            charCount.textContent = existingNotes.length;
-            
+        function openNotesModal(btn) {
+            currentNotesBtn = btn;
+            const row = btn.closest('.table-row');
+            const medName = row.querySelector('.med-name-input').value || 'Unnamed Medication';
+            modalMedName.textContent = medName;
+            const existing = btn.dataset.note || '';
+            notesTextarea.value = existing;
+            charCount.textContent = existing.length;
             notesModal.classList.add('active');
             notesTextarea.focus();
         }
 
-        // Function to close notes modal
-        function closeModal() {
-            notesModal.classList.remove('active');
-            currentMedicationButton = null;
-        }
-
-        // Save notes
-        function saveNotes() {
-            const medicationName = modalMedName.textContent;
-            const notes = notesTextarea.value.trim();
-            
-            // Save notes data
-            if (notes) {
-                notesData[medicationName] = notes;
-                currentMedicationButton.classList.add('has-notes');
-            } else {
-                delete notesData[medicationName];
-                currentMedicationButton.classList.remove('has-notes');
-            }
-            
-            // Update button data attribute
-            currentMedicationButton.setAttribute('data-medication', medicationName);
-            
-            closeModal();
-        }
-
-        // Attach event to notes button
-        function attachNotesButtonEvent(button) {
-            button.addEventListener('click', function(e) {
-                e.preventDefault();
-                openNotesModal(this);
-            });
-        }
-
-        // Attach events to all existing notes buttons
-        document.querySelectorAll('.notes-btn').forEach(button => {
-            attachNotesButtonEvent(button);
+        notesTextarea.addEventListener('input', function() {
+            if (this.value.length > 500) this.value = this.value.substring(0, 500);
+            charCount.textContent = this.value.length;
         });
 
-        // Modal close events
-        closeNotesModal.addEventListener('click', closeModal);
-        cancelNotesBtn.addEventListener('click', closeModal);
-        saveNotesBtn.addEventListener('click', saveNotes);
+        function closeNotesModalFunc() { notesModal.classList.remove('active'); currentNotesBtn = null; }
 
-        // Close modal when clicking outside
-        notesModal.addEventListener('click', function(e) {
-            if (e.target === notesModal) {
-                closeModal();
+        document.getElementById('closeNotesModal').addEventListener('click', closeNotesModalFunc);
+        document.getElementById('cancelNotesBtn').addEventListener('click', closeNotesModalFunc);
+        notesModal.addEventListener('click', e => { if (e.target === notesModal) closeNotesModalFunc(); });
+
+        document.getElementById('saveNotesBtn').addEventListener('click', () => {
+            if (!currentNotesBtn) return;
+            const note = notesTextarea.value.trim();
+            currentNotesBtn.dataset.note = note;
+            if (note) { currentNotesBtn.classList.add('has-notes'); }
+            else { currentNotesBtn.classList.remove('has-notes'); }
+            saveMeds();
+            closeNotesModalFunc();
+        });
+
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') {
+                if (notesModal.classList.contains('active')) closeNotesModalFunc();
+                if (appointmentModal.classList.contains('active')) closeAppointmentModalFunc();
             }
         });
 
-        // Close modal with Escape key
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && notesModal.classList.contains('active')) {
-                closeModal();
-            }
-        });
-
-        // Appointment Modal Functionality
-        const appointmentModal = document.getElementById('appointmentModal');
-        const appointmentTitle = document.getElementById('appointmentTitle');
-        const appointmentTime = document.getElementById('appointmentTime');
-        const appointmentDuration = document.getElementById('appointmentDuration');
-        const appointmentDesc = document.getElementById('appointmentDesc');
-        const appointmentDateDisplay = document.getElementById('appointmentDateDisplay');
-        const closeAppointmentModal = document.getElementById('closeAppointmentModal');
-        const cancelAppointmentBtn = document.getElementById('cancelAppointmentBtn');
-        const saveAppointmentBtn = document.getElementById('saveAppointmentBtn');
-        const addAppointmentBtn = document.getElementById('addAppointmentBtn');
-
-        // Store appointments data
-        const appointmentsData = {};
-
-        // Open appointment modal
-        addAppointmentBtn.addEventListener('click', function() {
-            if (!selectedCalendarDay || !selectedCalendarDay.textContent.trim()) {
-                alert('Please select a day on the calendar first!');
-                return;
-            }
-            
-            const day = selectedCalendarDay.textContent.trim();
-            appointmentDateDisplay.textContent = `For day ${day}`;
-            appointmentModal.classList.add('active');
-            appointmentTitle.focus();
-        });
-
-        // Close appointment modal
-        function closeAppointmentModalFunc() {
-            appointmentModal.classList.remove('active');
-            // Clear form
-            appointmentTitle.value = '';
-            appointmentTime.value = '';
-            appointmentDesc.value = '';
-        }
-
-        closeAppointmentModal.addEventListener('click', closeAppointmentModalFunc);
-        cancelAppointmentBtn.addEventListener('click', closeAppointmentModalFunc);
-
-        // Save appointment
-        saveAppointmentBtn.addEventListener('click', function() {
-            const title = appointmentTitle.value.trim();
-            const time = appointmentTime.value;
-            
-            if (!title || !time) {
-                alert('Please fill in the appointment title and time!');
-                return;
-            }
-            
-            const day = selectedCalendarDay.textContent.trim();
-            const duration = appointmentDuration.value;
-            const description = appointmentDesc.value.trim();
-            
-            // Store appointment
-            if (!appointmentsData[day]) {
-                appointmentsData[day] = [];
-            }
-            
-            appointmentsData[day].push({
-                title: title,
-                time: time,
-                duration: duration,
-                description: description
-            });
-            
-            // Sort appointments by time
-            appointmentsData[day].sort((a, b) => a.time.localeCompare(b.time));
-            
-            closeAppointmentModalFunc();
-            alert('Appointment added successfully!');
-        });
-
-        // Close modal when clicking outside
-        appointmentModal.addEventListener('click', function(e) {
-            if (e.target === appointmentModal) {
-                closeAppointmentModalFunc();
-            }
-        });
-
-        // Toggle buttons for monthly/daily view
-        const toggleBtns = document.querySelectorAll('.toggle-btn');
-        const calendarGrid = document.querySelector('.calendar-grid');
+        // ===== CALENDAR =====
+        const calendarGrid = document.getElementById('calendarGrid');
+        const toggleMonthly = document.getElementById('toggleMonthly');
+        const toggleDaily = document.getElementById('toggleDaily');
         const dailyView = document.getElementById('dailyView');
         const dailyViewDate = document.getElementById('dailyViewDate');
         const appointmentsList = document.getElementById('appointmentsList');
-        
-        toggleBtns.forEach(btn => {
-            btn.addEventListener('click', function() {
-                toggleBtns.forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-                
-                const isDaily = this.textContent.trim() === 'daily';
-                
-                if (isDaily) {
-                    calendarGrid.style.display = 'none';
-                    dailyView.classList.add('active');
-                    showDailyView();
-                } else {
-                    calendarGrid.style.display = 'grid';
-                    dailyView.classList.remove('active');
-                }
+        let selectedCalendarDay = null;
+
+        // Build dynamic calendar for current month
+        function buildCalendar() {
+            // Remove existing day cells (keep headers)
+            const headers = calendarGrid.querySelectorAll('.calendar-day-header');
+            calendarGrid.innerHTML = '';
+            headers.forEach(h => calendarGrid.appendChild(h));
+
+            const now = new Date();
+            const year = now.getFullYear();
+            const month = now.getMonth();
+            const firstDay = new Date(year, month, 1).getDay(); // 0=Sun
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
+            const today = now.getDate();
+
+            // Day headers
+            ['Su','Mo','Tu','We','Th','Fr','Sa'].forEach((d, i) => {
+                const h = document.createElement('div');
+                h.className = `calendar-day-header ${i === 0 || i === 6 ? 'weekend' : 'weekday'}`;
+                h.textContent = d;
+                calendarGrid.appendChild(h);
             });
+
+            // Empty cells before first day
+            for (let i = 0; i < firstDay; i++) {
+                const empty = document.createElement('div');
+                empty.className = 'calendar-day weekday';
+                calendarGrid.appendChild(empty);
+            }
+
+            // Day cells
+            for (let d = 1; d <= daysInMonth; d++) {
+                const dayEl = document.createElement('div');
+                const dow = (firstDay + d - 1) % 7;
+                dayEl.className = `calendar-day ${dow === 0 || dow === 6 ? 'weekend' : 'weekday'}`;
+                dayEl.textContent = d;
+
+                if (d === today) dayEl.classList.add('today');
+                if (appointmentsData[d] && appointmentsData[d].length > 0) dayEl.classList.add('has-appointment');
+
+                dayEl.addEventListener('click', function() {
+                    document.querySelectorAll('.calendar-day').forEach(c => c.classList.remove('selected-day'));
+                    this.classList.add('selected-day');
+                    selectedCalendarDay = this;
+                });
+
+                calendarGrid.appendChild(dayEl);
+            }
+        }
+
+        buildCalendar();
+
+        toggleMonthly.addEventListener('click', () => {
+            toggleMonthly.classList.add('active');
+            toggleDaily.classList.remove('active');
+            calendarGrid.style.display = 'grid';
+            dailyView.classList.remove('active');
         });
 
-        // Show daily view
+        toggleDaily.addEventListener('click', () => {
+            toggleDaily.classList.add('active');
+            toggleMonthly.classList.remove('active');
+            calendarGrid.style.display = 'none';
+            dailyView.classList.add('active');
+            showDailyView();
+        });
+
+        function formatTime(time24) {
+            const [hours, minutes] = time24.split(':');
+            const h = parseInt(hours);
+            const ampm = h >= 12 ? 'PM' : 'AM';
+            const h12 = h % 12 || 12;
+            return `${h12}:${minutes} ${ampm}`;
+        }
+
         function showDailyView() {
             const today = new Date();
             const day = today.getDate();
-            const monthNames = ["January", "February", "March", "April", "May", "June",
-                "July", "August", "September", "October", "November", "December"];
-            const month = monthNames[today.getMonth()];
-            
-            dailyViewDate.textContent = `${month} ${day}, ${today.getFullYear()}`;
-            
-            // Show appointments for today
+            const monthNames = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+            dailyViewDate.textContent = `${monthNames[today.getMonth()]} ${day}, ${today.getFullYear()}`;
+
             if (appointmentsData[day] && appointmentsData[day].length > 0) {
                 appointmentsList.innerHTML = appointmentsData[day].map(apt => `
                     <div class="appointment-item">
@@ -743,92 +484,224 @@ Examples:
                     <div class="no-appointments">
                         <div class="no-appointments-icon">📅</div>
                         <div>No appointments for today</div>
-                    </div>
-                `;
+                    </div>`;
             }
         }
 
-        // Format time from 24h to 12h
-        function formatTime(time24) {
-            const [hours, minutes] = time24.split(':');
-            const h = parseInt(hours);
-            const ampm = h >= 12 ? 'PM' : 'AM';
-            const h12 = h % 12 || 12;
-            return `${h12}:${minutes} ${ampm}`;
-        }
+        showDailyView();
 
-        // Add appointment button (old one - keep for compatibility)
-        const oldAddApptBtn = document.querySelector('.add-appointment-btn');
-        if (oldAddApptBtn && oldAddApptBtn.id !== 'addAppointmentBtn') {
-            oldAddApptBtn.addEventListener('click', function() {
-                if (!selectedCalendarDay) {
-                    alert('Please select a day on the calendar first!');
-                }
+        // ===== ALL APPOINTMENTS PANEL =====
+        function renderAllAppointments() {
+            const allList = document.getElementById('allAppointmentsList');
+            const monthNames = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+            const currentMonth = new Date().getMonth();
+            const currentYear = new Date().getFullYear();
+
+            const allEntries = [];
+            for (let day in appointmentsData) {
+                (appointmentsData[day] || []).forEach(apt => {
+                    allEntries.push({ day: parseInt(day), ...apt });
+                });
+            }
+
+            allEntries.sort((a, b) => {
+                if (a.day !== b.day) return a.day - b.day;
+                return a.time.localeCompare(b.time);
             });
+
+            if (allEntries.length === 0) {
+                allList.innerHTML = `
+                    <div class="no-appointments">
+                        <div class="no-appointments-icon">📅</div>
+                        <div>No appointments saved yet</div>
+                    </div>`;
+                return;
+            }
+
+            allList.innerHTML = allEntries.map(apt => `
+                <div class="appointment-item all-apt-item">
+                    <div class="all-apt-date">${monthNames[currentMonth]} ${apt.day}, ${currentYear}</div>
+                    <div class="appointment-time">${formatTime(apt.time)} (${apt.duration} min)</div>
+                    <div class="appointment-title">${apt.title}</div>
+                    ${apt.description ? `<div class="appointment-desc">${apt.description}</div>` : ''}
+                </div>
+            `).join('');
         }
 
-        // Toggle buttons (old code - removed as it's now integrated above)
+        renderAllAppointments();
 
-        // AI Chat functionality
+        // ===== APPOINTMENT MODAL =====
+        const appointmentModal = document.getElementById('appointmentModal');
+        const appointmentTitle = document.getElementById('appointmentTitle');
+        const appointmentTime = document.getElementById('appointmentTime');
+        const appointmentDuration = document.getElementById('appointmentDuration');
+        const appointmentDesc = document.getElementById('appointmentDesc');
+        const appointmentDateDisplay = document.getElementById('appointmentDateDisplay');
+
+        document.getElementById('addAppointmentBtn').addEventListener('click', () => {
+            if (!selectedCalendarDay || !selectedCalendarDay.textContent.trim()) {
+                // If in daily view, use today
+                if (dailyView.classList.contains('active')) {
+                    selectedCalendarDay = { textContent: new Date().getDate().toString() };
+                } else {
+                    alert('Please select a day on the calendar first!');
+                    return;
+                }
+            }
+            const day = typeof selectedCalendarDay.textContent === 'string'
+                ? selectedCalendarDay.textContent.trim()
+                : selectedCalendarDay.textContent;
+            appointmentDateDisplay.textContent = `For day ${day}`;
+            appointmentModal.classList.add('active');
+            appointmentTitle.focus();
+        });
+
+        function closeAppointmentModalFunc() {
+            appointmentModal.classList.remove('active');
+            appointmentTitle.value = '';
+            appointmentTime.value = '';
+            appointmentDesc.value = '';
+        }
+
+        document.getElementById('closeAppointmentModal').addEventListener('click', closeAppointmentModalFunc);
+        document.getElementById('cancelAppointmentBtn').addEventListener('click', closeAppointmentModalFunc);
+        appointmentModal.addEventListener('click', e => { if (e.target === appointmentModal) closeAppointmentModalFunc(); });
+
+        document.getElementById('saveAppointmentBtn').addEventListener('click', () => {
+            const title = appointmentTitle.value.trim();
+            const time = appointmentTime.value;
+            if (!title || !time) { alert('Please fill in the appointment title and time!'); return; }
+
+            const day = typeof selectedCalendarDay.textContent === 'string'
+                ? selectedCalendarDay.textContent.trim()
+                : selectedCalendarDay.textContent;
+            const duration = appointmentDuration.value;
+            const description = appointmentDesc.value.trim();
+
+            if (!appointmentsData[day]) appointmentsData[day] = [];
+            appointmentsData[day].push({ title, time, duration, description });
+            appointmentsData[day].sort((a, b) => a.time.localeCompare(b.time));
+
+            saveAppointments();
+
+            // Update calendar dot
+            document.querySelectorAll('.calendar-day').forEach(el => {
+                if (el.textContent.trim() === String(day)) el.classList.add('has-appointment');
+            });
+
+            closeAppointmentModalFunc();
+            showDailyView();
+            renderAllAppointments();
+        });
+
+        // ===== AI CHAT =====
         const chatInput = document.getElementById('chatInput');
         const sendBtn = document.getElementById('sendBtn');
         const chatMessages = document.getElementById('chatMessages');
 
-        function addMessage(text, isUser = false) {
-            const messageDiv = document.createElement('div');
-            messageDiv.className = isUser ? 'user-message' : 'ai-message';
-            messageDiv.textContent = text;
-            chatMessages.appendChild(messageDiv);
+        function addMessage(html, isUser = false) {
+            const div = document.createElement('div');
+            div.className = isUser ? 'user-message' : 'ai-message';
+            div.innerHTML = html;
+            chatMessages.appendChild(div);
             chatMessages.scrollTop = chatMessages.scrollHeight;
         }
 
+        function getMedsSummary() {
+            const saved = loadMeds();
+            const filled = saved.filter(m => m.name);
+            return filled;
+        }
+
         function generateRecommendations() {
-            // Simulate AI thinking
             addMessage('Analyzing your medications and health data...', false);
-            
+
             setTimeout(() => {
-                const recommendations = `Based on your current medications (Misoprostol, Pending Med) and treatment history, here are my recommendations:
+                const meds = getMedsSummary();
 
-1. **Medication Adherence**: You have a missed dose of Misoprostol. Consider setting up reminders to improve adherence.
+                if (meds.length === 0) {
+                    addMessage("I don't see any medications saved in your list yet. Add your medications to the list above so I can give you personalized tips!", false);
+                    return;
+                }
 
-2. **Follow-up Care**: Schedule a follow-up appointment with your healthcare provider within the next 2 weeks to review your current treatment plan.
+                const taken = meds.filter(m => m.status === 'Taken');
+                const missed = meds.filter(m => m.status === 'Missed');
+                const pending = meds.filter(m => m.status === 'Pending');
+                const withNotes = meds.filter(m => m.note);
 
-3. **Symptom Tracking**: Continue documenting any side effects or symptoms you experience with your current medications.
+                let response = `<strong>Here's your medication summary and tips:</strong><br><br>`;
 
-4. **Lifestyle**: Maintain a consistent schedule for taking medications, ideally at the same time each day.
+                response += `📋 <strong>Your logged medications:</strong> ${meds.map(m => m.name).join(', ')}<br><br>`;
 
-Remember: These are general suggestions based on your data. Always consult your healthcare provider before making any changes to your treatment plan.`;
-                
-                addMessage(recommendations, false);
+                if (taken.length > 0) {
+                    response += `✅ <strong>Taken:</strong> ${taken.map(m => m.name).join(', ')} — Great job keeping up with these. Consistency is key; try to take them at the same time each day to maintain stable levels in your body.<br><br>`;
+                }
+
+                if (missed.length > 0) {
+                    response += `⚠️ <strong>Missed:</strong> ${missed.map(m => m.name).join(', ')} — A missed dose can happen. As a general rule, take it as soon as you remember unless it's close to the time of the next dose — in that case, skip it and resume your normal schedule. Never double-dose without your doctor's guidance.<br><br>`;
+                }
+
+                if (pending.length > 0) {
+                    response += `🕐 <strong>Pending:</strong> ${pending.map(m => m.name).join(', ')} — These are coming up. Setting a phone reminder 15 minutes before your scheduled time can help you stay on track.<br><br>`;
+                }
+
+                if (withNotes.length > 0) {
+                    response += `📝 <strong>Medications with notes:</strong> ${withNotes.map(m => m.name).join(', ')} — You've added personal notes to these. Always follow the specific instructions your doctor has given you, especially for any special timing or food requirements mentioned in your notes.<br><br>`;
+                }
+
+                response += `<strong>General reminders:</strong><br>
+• Store medications at room temperature away from humidity unless otherwise indicated.<br>
+• Never stop or adjust a medication on your own — always check with your doctor first.<br>
+• If you notice unusual symptoms, document them in your notes and bring them up at your next appointment.<br><br>
+<em>These tips are based on your logged data and general good practices. They do not replace your doctor's specific instructions.</em>`;
+
+                addMessage(response, false);
             }, 1500);
         }
 
         function handleSend() {
             const message = chatInput.value.trim();
-            if (message === '') return;
-
+            if (!message) return;
             addMessage(message, true);
             chatInput.value = '';
 
-            // Check if user is asking for recommendations
-            if (message.toLowerCase().includes('send recommendations') || 
-                message.toLowerCase().includes('recommend') ||
-                message.toLowerCase().includes('suggest')) {
+            const lower = message.toLowerCase();
+
+            if (lower.includes('send recommendations') || lower.includes('recommend') || lower.includes('suggest') || lower.includes('tips')) {
                 generateRecommendations();
-            } else {
-                // Generic AI response for other queries
+            } else if (lower.includes('missed') || lower.includes('forgot')) {
                 setTimeout(() => {
-                    addMessage('I can provide personalized treatment recommendations based on your medication history. Type "send recommendations" to get started, or ask me specific questions about your treatment plan.', false);
-                }, 800);
+                    addMessage("If you've missed a dose, the general guidance is: take it as soon as you remember. However, if it's almost time for the next dose, skip the missed one and continue your normal schedule. <strong>Never take two doses at once</strong> to make up for a missed one — but always follow your doctor's specific instructions for your medication.", false);
+                }, 600);
+            } else if (lower.includes('side effect') || lower.includes('reaction')) {
+                setTimeout(() => {
+                    addMessage("Side effects vary widely by medication. Common general ones include nausea, dizziness, or drowsiness — especially in the first days of a new medication. Log any symptoms you notice using the notes button in your medication list. If a reaction feels severe (difficulty breathing, swelling, rash), contact your healthcare provider or emergency services immediately.", false);
+                }, 600);
+            } else if (lower.includes('food') || lower.includes('eat') || lower.includes('meal')) {
+                setTimeout(() => {
+                    addMessage("Some medications should be taken with food to reduce stomach irritation (e.g. ibuprofen, certain antibiotics), while others need to be taken on an empty stomach for proper absorption. Check the label or your doctor's notes. You can also add this detail to your medication notes for easy reference.", false);
+                }, 600);
+            } else if (lower.includes('water') || lower.includes('drink')) {
+                setTimeout(() => {
+                    addMessage("Most oral medications should be taken with a full glass of water. Staying well-hydrated also supports your body's ability to process medications properly. Avoid grapefruit juice with certain medications, as it can interfere with drug metabolism — ask your doctor if this applies to yours.", false);
+                }, 600);
+            } else if (lower.includes('store') || lower.includes('storage') || lower.includes('keep')) {
+                setTimeout(() => {
+                    addMessage("Most medications should be stored in a cool, dry place away from direct sunlight — a drawer or cabinet works well. Avoid bathrooms (humidity) and cars (heat). Some medications like certain eye drops or insulin require refrigeration — check the label. Keep all medications out of reach of children.", false);
+                }, 600);
+            } else if (lower.includes('interact') || lower.includes('mix') || lower.includes('together')) {
+                setTimeout(() => {
+                    addMessage("Drug interactions are an important topic that only your pharmacist or doctor can fully evaluate for your specific combination of medications. As a general rule, always tell your doctor about <em>all</em> medications, supplements, and vitamins you're taking — even over-the-counter ones.", false);
+                }, 600);
+            } else {
+                setTimeout(() => {
+                    addMessage("I'm here to help with general medication monitoring and wellness tips. You can ask me about missed doses, side effects, food interactions, storage, or type <strong>'send recommendations'</strong> for a full analysis of your current medication log.", false);
+                }, 600);
             }
         }
 
         sendBtn.addEventListener('click', handleSend);
-        chatInput.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                handleSend();
-            }
-        });
+        chatInput.addEventListener('keypress', e => { if (e.key === 'Enter') handleSend(); });
     </script>
 </body>
 </html>

@@ -7,15 +7,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet"> 
-    <link rel="stylesheet" href="map-styles.css"> 
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" 
-    />  
-    <script 
-    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"> 
-    </script> 
-
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />  
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script> 
+    <link rel="stylesheet" href="map-styles.css">
 </head>
-
 
 <body>
     <div class="container">
@@ -23,12 +18,9 @@
         <header class="header">
             <button class="menu-btn" id="menuBtn">
                 <div class="menu-icon">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                    <span></span><span></span><span></span>
                 </div>
             </button>
-            
             <div class="header-actions">
                 <button class="icon-btn" aria-label="Profile">
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -50,22 +42,22 @@
                 <button class="close-btn" id="closeBtn">&times;</button>
             </div>
             <nav class="sidebar-nav">
-                <a href="#" class="nav-item">
-                    <span class="nav-icon">🏠</span>
-                    <span>Home page</span>
-                </a>
-                <a href="#" class="nav-item">
-                    <span class="nav-icon">📊</span>
-                    <span>Symptom Tracing</span>
-                </a>
-                <a href="#" class="nav-item active">
-                    <span class="nav-icon">🗺️</span>
-                    <span>Map</span>
-                </a>
-                <a href="#" class="nav-item">
-                    <span class="nav-icon">💊</span>
-                    <span>Meds & Appointments</span>
-                </a>
+               <a href="index.html" class="nav-item">
+            <span class="nav-icon">🏠</span>
+            <span>Home page</span>
+        </a>
+        <a href="symptoms.html" class="nav-item">
+            <span class="nav-icon">📊</span>
+            <span>Symptom Tracking</span>
+        </a>
+        <a href="map.html" class="nav-item">
+            <span class="nav-icon">🗺️</span>
+            <span>Map</span>
+        </a>
+        <a href="meds.html" class="nav-item">
+        <span class="nav-icon">💊</span>
+        <span>Meds & Appointments</span>
+        </a>
             </nav>
         </div>
         <div class="sidebar-overlay" id="sidebarOverlay"></div>
@@ -75,8 +67,8 @@
             <!-- Medical Centers Panel -->
             <div class="medical-centers-panel">
                 <h2 class="panel-title">Medical centers close</h2>
-                                    <div class="centers-list" id="centersList">
-                                        <div class="center-item">
+                <div class="centers-list" id="centersList">
+                    <div class="center-item">
                         <div class="center-dot"></div>
                         <div class="center-info">
                             <div class="center-name">Hospital Santo Tomás</div>
@@ -84,7 +76,6 @@
                             <div class="center-specialty">General Hospital</div>
                         </div>
                     </div>
-
                     <div class="center-item">
                         <div class="center-dot"></div>
                         <div class="center-info">
@@ -93,7 +84,6 @@
                             <div class="center-specialty">Private Hospital</div>
                         </div>
                     </div>
-
                     <div class="center-item">
                         <div class="center-dot"></div>
                         <div class="center-info">
@@ -102,7 +92,6 @@
                             <div class="center-specialty">Specialized Care</div>
                         </div>
                     </div>
-
                     <div class="center-item">
                         <div class="center-dot"></div>
                         <div class="center-info">
@@ -119,76 +108,120 @@
                 <div id="map" class="map"></div>
             </div>
 
-            <!-- Places Filter Panel -->
-            <div class="places-panel">
-                <h2 class="panel-title">Places</h2>
-                <div class="places-selector">
-                    <select id="placesFilter" class="places-dropdown">
-                        <option value="">Choose you want</option>
-                        <option value="restaurants">🍽️ Restaurants</option>
-                        <option value="parks">🌳 Parks</option>
-                        <option value="museums">🏛️ Museums</option>
-                        <option value="cafes">☕ Cafés</option>
-                        <option value="libraries">📚 Libraries</option>
-                        <option value="shopping">🛍️ Shopping Centers</option>
-                        <option value="cinemas">🎬 Cinemas</option>
-                        <option value="theaters">🎭 Theaters</option>
-                    </select>
+            <!-- Right Panel: Places + Sensory Filters + Pharmacies -->
+            <div style="display: flex; flex-direction: column; gap: 0;">
+
+                <!-- Places Filter Panel -->
+                <div class="places-panel">
+                    <h2 class="panel-title">Places</h2>
+                    <div class="places-selector">
+                        <select id="placesFilter" class="places-dropdown">
+                            <option value="">Choose you want</option>
+                            <option value="restaurants">🍽️ Restaurants</option>
+                            <option value="parks">🌳 Parks</option>
+                            <option value="museums">🏛️ Museums</option>
+                            <option value="cafes">☕ Cafés</option>
+                            <option value="libraries">📚 Libraries</option>
+                            <option value="shopping">🛍️ Shopping Centers</option>
+                            <option value="cinemas">🎬 Cinemas</option>
+                            <option value="theaters">🎭 Theaters</option>
+                        </select>
+                    </div>
+                    <div class="sensory-filters">
+                        <h3 class="filter-title">Sensory Filters</h3>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="filterNoise" checked>
+                            <span>🔇 Low Noise</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="filterLight" checked>
+                            <span>💡 Soft Lighting</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="filterCrowd" checked>
+                            <span>👥 Less Crowded</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="filterScent">
+                            <span>🌸 Low Scent</span>
+                        </label>
+                    </div>
                 </div>
-                
-                <!-- Sensory Filters -->
-                <div class="sensory-filters">
-                    <h3 class="filter-title">Sensory Filters</h3>
-                    <label class="checkbox-label">
-                        <input type="checkbox" id="filterNoise" checked>
-                        <span>🔇 Low Noise</span>
-                    </label>
-                    <label class="checkbox-label">
-                        <input type="checkbox" id="filterLight" checked>
-                        <span>💡 Soft Lighting</span>
-                    </label>
-                    <label class="checkbox-label">
-                        <input type="checkbox" id="filterCrowd" checked>
-                        <span>👥 Less Crowded</span>
-                    </label>
-                    <label class="checkbox-label">
-                        <input type="checkbox" id="filterScent">
-                        <span>🌸 Low Scent</span>
-                    </label>
+
+                <!-- PHARMACY PANEL -->
+                <div class="pharmacy-panel">
+                    <h3 class="filter-title">💊 Accessible Pharmacies</h3>
+                    <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 14px;">Budget-friendly & wheelchair accessible in Panama City</p>
+
+                    <div class="pharmacy-list" id="pharmacyList">
+                        <label class="pharmacy-checkbox-label" data-pharmacy="farmacia-arrocha">
+                            <input type="checkbox" name="pharmacy" value="farmacia-arrocha">
+                            <div class="pharm-label-text">
+                                <span class="pharm-name">Farmacia Arrocha</span>
+                                <span class="pharm-tag">♿ Accessible · Budget-friendly</span>
+                            </div>
+                        </label>
+                        <label class="pharmacy-checkbox-label" data-pharmacy="farmacia-metro">
+                            <input type="checkbox" name="pharmacy" value="farmacia-metro">
+                            <div class="pharm-label-text">
+                                <span class="pharm-name">Farmacia Metro</span>
+                                <span class="pharm-tag">♿ Accessible · Low-cost generics</span>
+                            </div>
+                        </label>
+                        <label class="pharmacy-checkbox-label" data-pharmacy="farmacia-revilla">
+                            <input type="checkbox" name="pharmacy" value="farmacia-revilla">
+                            <div class="pharm-label-text">
+                                <span class="pharm-name">Farmacia Revilla</span>
+                                <span class="pharm-tag">♿ Accessible · Wide selection</span>
+                            </div>
+                        </label>
+                        <label class="pharmacy-checkbox-label" data-pharmacy="farmacia-chanan">
+                            <input type="checkbox" name="pharmacy" value="farmacia-chanan">
+                            <div class="pharm-label-text">
+                                <span class="pharm-name">Farmacia Chanan</span>
+                                <span class="pharm-tag">♿ Accessible · 24/7 open</span>
+                            </div>
+                        </label>
+                        <label class="pharmacy-checkbox-label" data-pharmacy="farmacia-felix">
+                            <input type="checkbox" name="pharmacy" value="farmacia-felix">
+                            <div class="pharm-label-text">
+                                <span class="pharm-name">Farmacia Félix B. Maduro</span>
+                                <span class="pharm-tag">♿ Accessible · Affordable</span>
+                            </div>
+                        </label>
+                    </div>
+
+                    <!-- Price list -->
+                    <div class="pharmacy-prices" id="pharmacyPrices">
+                        <div class="prices-header">
+                            💰 Prices at <span class="price-selected-name" id="priceSelectedName"></span>
+                            <span class="accessible-badge">♿ Accessible</span>
+                        </div>
+                        <table class="price-table" id="priceTable"></table>
+                    </div>
                 </div>
-            </div>
+
+            </div><!-- end right panel wrapper -->
         </div>
     </div>
 
     <script>
-        // Sidebar menu toggle
+        // ===== SIDEBAR =====
         const menuBtn = document.getElementById('menuBtn');
         const closeBtn = document.getElementById('closeBtn');
         const sidebarMenu = document.getElementById('sidebarMenu');
         const sidebarOverlay = document.getElementById('sidebarOverlay');
+        menuBtn.addEventListener('click', () => { sidebarMenu.classList.add('active'); sidebarOverlay.classList.add('active'); });
+        closeBtn.addEventListener('click', () => { sidebarMenu.classList.remove('active'); sidebarOverlay.classList.remove('active'); });
+        sidebarOverlay.addEventListener('click', () => { sidebarMenu.classList.remove('active'); sidebarOverlay.classList.remove('active'); });
 
-        function openMenu() {
-            sidebarMenu.classList.add('active');
-            sidebarOverlay.classList.add('active');
-        }
-
-        function closeMenu() {
-            sidebarMenu.classList.remove('active');
-            sidebarOverlay.classList.remove('active');
-        }
-
-        menuBtn.addEventListener('click', openMenu);
-        closeBtn.addEventListener('click', closeMenu);
-        sidebarOverlay.addEventListener('click', closeMenu);
-
-                // Initialize map FIRST
+        // ===== MAP =====
         const map = L.map('map').setView([8.9824, -79.5199], 13);
-
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
             attribution: '&copy; OpenStreetMap contributors'
         }).addTo(map);
 
-        // ADD THE FUNCTION HERE
+        // ===== SENSORY FILTERS =====
         function getActiveFilters() {
             return {
                 lowNoise: document.getElementById("filterNoise").checked,
@@ -198,222 +231,257 @@
             };
         }
 
-        // THEN your filter logic
         const placesFilter = document.getElementById('placesFilter');
-
         let currentMarkers = [];
 
-    placesFilter.addEventListener('change', function() {
-        const selectedPlace = this.value;
+        placesFilter.addEventListener('change', function() {
+            const selectedPlace = this.value;
+            currentMarkers.forEach(marker => map.removeLayer(marker));
+            currentMarkers = [];
+            if (!selectedPlace) return;
 
-        // Remove old markers
-        currentMarkers.forEach(marker => map.removeLayer(marker));
-        currentMarkers = [];
+            const placesData = {
+                parks: [
+                    { name: "Parque Omar", coords: [8.9996, -79.5090], lowNoise: true, softLighting: true, lessCrowded: true, lowScent: true },
+                    { name: "Cinta Costera", coords: [8.9723, -79.5297], lowNoise: false, softLighting: true, lessCrowded: false, lowScent: true },
+                    { name: "Parque Natural Metropolitano", coords: [8.9971, -79.5474], lowNoise: true, softLighting: true, lessCrowded: true, lowScent: true },
+                    { name: "Parque Recreativo y Cultural Omar (Jardín)", coords: [8.9998, -79.5085], lowNoise: true, softLighting: true, lessCrowded: true, lowScent: false },
+                    { name: "Parque Urracá", coords: [8.9897, -79.5213], lowNoise: true, softLighting: true, lessCrowded: true, lowScent: true },
+                    { name: "Parque Andrés Bello", coords: [8.9860, -79.5180], lowNoise: true, softLighting: false, lessCrowded: true, lowScent: true },
+                    { name: "Jardín Botánico Summit", coords: [9.0480, -79.5890], lowNoise: true, softLighting: true, lessCrowded: true, lowScent: false }
+                ],
+                restaurants: [
+                    { name: "Mahalo Cocina y Jardin", coords: [8.9812, -79.5187], lowNoise: true, softLighting: true, lessCrowded: true, lowScent: false },
+                    { name: "Mentiritas Blancas", coords: [8.9804, -79.5198], lowNoise: true, softLighting: true, lessCrowded: true, lowScent: true },
+                    { name: "Riba-Smith Cafe", coords: [9.0105, -79.5321], lowNoise: false, softLighting: true, lessCrowded: false, lowScent: true },
+                    { name: "Donde José", coords: [8.9508, -79.5342], lowNoise: true, softLighting: true, lessCrowded: true, lowScent: false },
+                    { name: "Café Unido (Multiplaza)", coords: [8.9830, -79.5068], lowNoise: true, softLighting: true, lessCrowded: false, lowScent: true },
+                    { name: "La Posta", coords: [8.9820, -79.5195], lowNoise: true, softLighting: true, lessCrowded: true, lowScent: false },
+                    { name: "Botanical Garden Café (Summit)", coords: [9.0480, -79.5890], lowNoise: true, softLighting: true, lessCrowded: true, lowScent: false },
+                    { name: "El Trapiche", coords: [8.9858, -79.5210], lowNoise: false, softLighting: true, lessCrowded: false, lowScent: false }
+                ],
+                museums: [
+                    { name: "Biomuseo", coords: [8.9526, -79.5675], lowNoise: true, softLighting: true, lessCrowded: true, lowScent: true },
+                    { name: "Museo del Canal Interoceánico", coords: [8.9506, -79.5349], lowNoise: true, softLighting: true, lessCrowded: false, lowScent: true },
+                    { name: "Museo Afroantillano de Panamá", coords: [8.9565, -79.5387], lowNoise: true, softLighting: false, lessCrowded: true, lowScent: true },
+                    { name: "Museo Anthropológico Reina Torres de Araúz", coords: [8.9618, -79.5368], lowNoise: true, softLighting: true, lessCrowded: true, lowScent: true },
+                    { name: "Museo del Arte Contemporáneo", coords: [8.9841, -79.5360], lowNoise: true, softLighting: true, lessCrowded: true, lowScent: true },
+                    { name: "Museo de Historia de Panamá", coords: [8.9502, -79.5345], lowNoise: true, softLighting: false, lessCrowded: true, lowScent: true }
+                ],
+                cafes: [
+                    { name: "Café Unido (Casco Viejo)", coords: [8.9518, -79.5338], lowNoise: true, softLighting: true, lessCrowded: false, lowScent: false },
+                    { name: "Bajareque Coffee House", coords: [8.9510, -79.5335], lowNoise: true, softLighting: true, lessCrowded: true, lowScent: false },
+                    { name: "Athena Café", coords: [8.9855, -79.5198], lowNoise: true, softLighting: true, lessCrowded: true, lowScent: true },
+                    { name: "Diablicos Café", coords: [8.9525, -79.5350], lowNoise: true, softLighting: true, lessCrowded: true, lowScent: true },
+                    { name: "Café Duran (El Cangrejo)", coords: [8.9892, -79.5221], lowNoise: false, softLighting: true, lessCrowded: false, lowScent: false },
+                    { name: "Panamá Coffee House", coords: [8.9871, -79.5215], lowNoise: true, softLighting: true, lessCrowded: true, lowScent: true }
+                ],
+                libraries: [
+                    { name: "Biblioteca Nacional de Panamá", coords: [8.9937, -79.5109], lowNoise: true, softLighting: true, lessCrowded: true, lowScent: true },
+                    { name: "Biblioteca Ernesto J. Castillero (UP)", coords: [8.9930, -79.5350], lowNoise: true, softLighting: true, lessCrowded: true, lowScent: true },
+                    { name: "Biblioteca del IESIP", coords: [8.9720, -79.5300], lowNoise: true, softLighting: true, lessCrowded: true, lowScent: true },
+                    { name: "Biblioteca Municipal de Panamá", coords: [8.9610, -79.5370], lowNoise: true, softLighting: false, lessCrowded: true, lowScent: true },
+                    { name: "Biblioteca de la USMA", coords: [8.9870, -79.5388], lowNoise: true, softLighting: true, lessCrowded: true, lowScent: true }
+                ],
+                shopping: [
+                    { name: "Albrook Mall", coords: [8.9752, -79.5514], lowNoise: false, softLighting: false, lessCrowded: false, lowScent: false },
+                    { name: "Multiplaza Pacific", coords: [8.9825, -79.5073], lowNoise: false, softLighting: true, lessCrowded: false, lowScent: false },
+                    { name: "AltaPlaza Mall", coords: [9.0215, -79.5324], lowNoise: true, softLighting: true, lessCrowded: true, lowScent: true },
+                    { name: "Los Pueblos (Tocumen)", coords: [9.0560, -79.3720], lowNoise: false, softLighting: false, lessCrowded: false, lowScent: false },
+                    { name: "Westland Mall", coords: [8.9790, -79.5540], lowNoise: false, softLighting: true, lessCrowded: false, lowScent: false },
+                    { name: "El Dorado Mall", coords: [9.0004, -79.5430], lowNoise: true, softLighting: true, lessCrowded: true, lowScent: false },
+                    { name: "Soho Mall (San Francisco)", coords: [8.9912, -79.5038], lowNoise: true, softLighting: true, lessCrowded: true, lowScent: true }
+                ],
+                cinemas: [
+                    { name: "Cinépolis Multiplaza", coords: [8.9820, -79.5065], lowNoise: false, softLighting: false, lessCrowded: false, lowScent: false },
+                    { name: "Cinépolis Albrook", coords: [8.9755, -79.5510], lowNoise: false, softLighting: false, lessCrowded: false, lowScent: false },
+                    { name: "Cinemark AltaPlaza", coords: [9.0210, -79.5320], lowNoise: false, softLighting: true, lessCrowded: true, lowScent: true },
+                    { name: "Cinépolis El Dorado", coords: [9.0001, -79.5425], lowNoise: false, softLighting: true, lessCrowded: true, lowScent: false },
+                    { name: "Cinemark Los Pueblos", coords: [9.0558, -79.3718], lowNoise: false, softLighting: false, lessCrowded: false, lowScent: false }
+                ],
+                theaters: [
+                    { name: "Teatro Nacional de Panamá", coords: [8.9516, -79.5330], lowNoise: true, softLighting: true, lessCrowded: true, lowScent: true },
+                    { name: "Teatro en Círculo", coords: [8.9940, -79.5182], lowNoise: true, softLighting: true, lessCrowded: true, lowScent: true },
+                    { name: "Teatro Anita Villalaz", coords: [8.9508, -79.5355], lowNoise: true, softLighting: true, lessCrowded: true, lowScent: true },
+                    { name: "Teatro Gladys Vernaza (Atlapa)", coords: [8.9895, -79.4980], lowNoise: true, softLighting: false, lessCrowded: false, lowScent: true },
+                    { name: "Teatro La Huaca (Atlapa)", coords: [8.9893, -79.4982], lowNoise: true, softLighting: true, lessCrowded: true, lowScent: true }
+                ]
+            };
 
-        if (!selectedPlace) return;
+            const filters = getActiveFilters();
+            const places = (placesData[selectedPlace] || []).filter(place => {
+                if (filters.lowNoise && !place.lowNoise) return false;
+                if (filters.softLighting && !place.softLighting) return false;
+                if (filters.lessCrowded && !place.lessCrowded) return false;
+                if (filters.lowScent && !place.lowScent) return false;
+                return true;
+            });
 
-        const placesData = {
-            parks: [
-            {
-            name: "Parque Omar",
-            coords: [8.9996, -79.5090],
-            lowNoise: true,
-            softLighting: true,
-            lessCrowded: true,
-            lowScent: true
-            },
-            {
-            name: "Cinta Costera",
-            coords: [8.9723, -79.5297],
-            lowNoise: false,
-            softLighting: true,
-            lessCrowded: false,
-            lowScent: true
-            },
-            {
-            name: "Parque Natural Metropolitano",
-            coords: [8.9971, -79.5474],
-            lowNoise: true,
-            softLighting: true,
-            lessCrowded: true,
-            lowScent: true
-            }
-            ],
+            places.forEach(place => {
+                const marker = L.marker(place.coords).addTo(map).bindPopup(`<b>${place.name}</b><br>Sensory-friendly location`);
+                currentMarkers.push(marker);
+            });
+        });
 
-            restaurants: [
-            {
-            name: "Mahalo Cocina y Jardin",
-            coords: [8.9812, -79.5187],
-            lowNoise: true,
-            softLighting: true,
-            lessCrowded: true,
-            lowScent: false
-            },
-            {
-            name: "Mentiritas Blancas",
-            coords: [8.9804, -79.5198],
-            lowNoise: true,
-            softLighting: true,
-            lessCrowded: true,
-            lowScent: true
-            },
-            {
-            name: "Riba-Smith Cafe",
-            coords: [9.0105, -79.5321],
-            lowNoise: false,
-            softLighting: true,
-            lessCrowded: false,
-            lowScent: true
-            }
-            ],
-        
-            museums: [
-            {
-            name: "Biomuseo",
-            coords: [8.9526, -79.5675],
-            lowNoise: true,
-            softLighting: true,
-            lessCrowded: true,
-            lowScent: true
-            },
-            {
-            name: "Museo del Canal Interoceanico",
-            coords: [8.9506, -79.5349],
-            lowNoise: true,
-            softLighting: true,
-            lessCrowded: false,
-            lowScent: true
-            },
-            {
-            name: "Museo de la Biodiversidad",
-            coords: [8.9526, -79.5675],
-            lowNoise: true,
-            softLighting: true,
-            lessCrowded: true,
-            lowScent: true
-            }
-            ],
+        const filterCheckboxes = document.querySelectorAll('.checkbox-label input[type="checkbox"]');
+        filterCheckboxes.forEach(cb => cb.addEventListener('change', () => placesFilter.dispatchEvent(new Event('change'))));
 
-            shopping: [
-            {
-            name: "Albrook Mall",
-            coords: [8.9752, -79.5514],
-            lowNoise: false,
-            softLighting: false,
-            lessCrowded: false,
-            lowScent: false
-            },
-            {
-            name: "Multiplaza Pacific",
-            coords: [8.9825, -79.5073],
-            lowNoise: false,
-            softLighting: true,
-            lessCrowded: false,
-            lowScent: false
-            },
-            {
-            name: "AltaPlaza Mall",
-            coords: [9.0215, -79.5324],
-            lowNoise: true,
-            softLighting: true,
-            lessCrowded: true,
-            lowScent: true
-            }
-            ]  
+        // ===== HOSPITAL DISTANCES =====
+        const hospitals = {
+            "distance-santo-tomas": [8.9663, -79.5361],
+            "distance-punta-pacifica": [8.9826, -79.5070],
+            "distance-nacional": [8.9717, -79.5350],
+            "distance-san-fernando": [8.9820, -79.5206]
         };
 
-        const filters = getActiveFilters();
-
-        const places = (placesData[selectedPlace] || []).filter(place => {
-            if (filters.lowNoise && !place.lowNoise) return false;
-            if (filters.softLighting && !place.softLighting) return false;
-            if (filters.lessCrowded && !place.lessCrowded) return false;
-            if (filters.lowScent && !place.lowScent) return false;
-            return true;
-        });
-
-        places.forEach(place => {
-            const marker = L.marker(place.coords)
-                .addTo(map)
-                .bindPopup(`<b>${place.name}</b><br>Sensory-friendly location`);
-
-            currentMarkers.push(marker);
-        });
-    });
-
-        // Sensory filters
-        const filterCheckboxes = document.querySelectorAll('.checkbox-label input[type="checkbox"]');
-
-        filterCheckboxes.forEach(checkbox => {
-            checkbox.addEventListener('change', () => {
-                 placesFilter.dispatchEvent(new Event('change'));
-    });
-});
-
-        filterCheckboxes.forEach(checkbox => {
-            checkbox.addEventListener('change', () => {
-                placesFilter.dispatchEvent(new Event('change'));
-    });
-});
-
-// Medical center coordinates
-const hospitals = {
-    "distance-santo-tomas": [8.9663, -79.5361],
-    "distance-punta-pacifica": [8.9826, -79.5070],
-    "distance-nacional": [8.9717, -79.5350],
-    "distance-san-fernando": [8.9820, -79.5206]
-};
-
-// Distance formula
-function calculateDistance(lat1, lon1, lat2, lon2) {
-    const R = 6371; // km
-    const dLat = (lat2 - lat1) * Math.PI / 180;
-    const dLon = (lon2 - lon1) * Math.PI / 180;
-
-    const a =
-        Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-        Math.cos(lat1 * Math.PI / 180) *
-        Math.cos(lat2 * Math.PI / 180) *
-        Math.sin(dLon / 2) * Math.sin(dLon / 2);
-
-    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-
-    return R * c;
-}
-
-// Get user location
-if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function(position) {
-
-        const userLat = position.coords.latitude;
-        const userLon = position.coords.longitude;
-
-        for (let id in hospitals) {
-
-            const hospital = hospitals[id];
-            const distance = calculateDistance(
-                userLat,
-                userLon,
-                hospital[0],
-                hospital[1]
-            );
-
-            const element = document.getElementById(id);
-
-            if (element) {
-                element.textContent = distance.toFixed(1) + " km away";
-            }
+        function calculateDistance(lat1, lon1, lat2, lon2) {
+            const R = 6371;
+            const dLat = (lat2 - lat1) * Math.PI / 180;
+            const dLon = (lon2 - lon1) * Math.PI / 180;
+            const a = Math.sin(dLat/2)**2 + Math.cos(lat1*Math.PI/180) * Math.cos(lat2*Math.PI/180) * Math.sin(dLon/2)**2;
+            return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
         }
 
-    }, function() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(pos => {
+                const { latitude: uLat, longitude: uLon } = pos.coords;
+                for (let id in hospitals) {
+                    const [hLat, hLon] = hospitals[id];
+                    const el = document.getElementById(id);
+                    if (el) el.textContent = calculateDistance(uLat, uLon, hLat, hLon).toFixed(1) + " km away";
+                }
+            }, () => {
+                document.querySelectorAll(".center-distance").forEach(el => el.textContent = "Location unavailable");
+            });
+        }
 
-        // If location denied
-        document.querySelectorAll(".center-distance").forEach(el => {
-            el.textContent = "Location unavailable";
+        // ===== PHARMACY DATA =====
+        const pharmacyData = {
+            "farmacia-arrocha": {
+                name: "Farmacia Arrocha",
+                coords: [8.9918, -79.5150],
+                prices: [
+                    { med: "Ibuprofeno 400mg (x20)", price: "$2.50" },
+                    { med: "Paracetamol 500mg (x20)", price: "$1.80" },
+                    { med: "Amoxicilina 500mg (x12)", price: "$4.20" },
+                    { med: "Loratadina 10mg (x10)", price: "$3.10" },
+                    { med: "Omeprazol 20mg (x14)", price: "$3.60" },
+                    { med: "Vitamina C 500mg (x30)", price: "$2.90" }
+                ]
+            },
+            "farmacia-metro": {
+                name: "Farmacia Metro",
+                coords: [8.9750, -79.5340],
+                prices: [
+                    { med: "Ibuprofeno 400mg (x20)", price: "$2.10" },
+                    { med: "Paracetamol 500mg (x20)", price: "$1.50" },
+                    { med: "Amoxicilina 500mg (x12)", price: "$3.80" },
+                    { med: "Metformina 500mg (x30)", price: "$4.00" },
+                    { med: "Atorvastatina 20mg (x30)", price: "$5.50" },
+                    { med: "Omeprazol 20mg (x14)", price: "$3.20" }
+                ]
+            },
+            "farmacia-revilla": {
+                name: "Farmacia Revilla",
+                coords: [8.9640, -79.5420],
+                prices: [
+                    { med: "Ibuprofeno 400mg (x20)", price: "$2.30" },
+                    { med: "Paracetamol 500mg (x20)", price: "$1.70" },
+                    { med: "Cetirizina 10mg (x10)", price: "$2.80" },
+                    { med: "Losartán 50mg (x30)", price: "$4.90" },
+                    { med: "Salbutamol Inhaler", price: "$6.20" },
+                    { med: "Vitamina D3 1000IU (x30)", price: "$3.40" }
+                ]
+            },
+            "farmacia-chanan": {
+                name: "Farmacia Chanan",
+                coords: [8.9875, -79.5010],
+                prices: [
+                    { med: "Ibuprofeno 400mg (x20)", price: "$2.20" },
+                    { med: "Paracetamol 500mg (x20)", price: "$1.60" },
+                    { med: "Amoxicilina 500mg (x12)", price: "$4.00" },
+                    { med: "Diclofenaco 50mg (x10)", price: "$2.70" },
+                    { med: "Omeprazol 20mg (x14)", price: "$3.40" },
+                    { med: "Zinc 50mg (x30)", price: "$2.50" }
+                ]
+            },
+            "farmacia-felix": {
+                name: "Farmacia Félix B. Maduro",
+                coords: [8.9692, -79.5265],
+                prices: [
+                    { med: "Ibuprofeno 400mg (x20)", price: "$2.00" },
+                    { med: "Paracetamol 500mg (x20)", price: "$1.40" },
+                    { med: "Amoxicilina 500mg (x12)", price: "$3.60" },
+                    { med: "Loratadina 10mg (x10)", price: "$2.90" },
+                    { med: "Ácido Fólico 5mg (x30)", price: "$1.80" },
+                    { med: "Metformina 500mg (x30)", price: "$3.80" }
+                ]
+            }
+        };
+
+        const pharmacyIcon = L.divIcon({
+            html: '<div style="background:#27ae60;color:white;border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-size:16px;box-shadow:0 2px 6px rgba(0,0,0,0.3);border:2px solid white;">💊</div>',
+            className: '',
+            iconSize: [32, 32],
+            iconAnchor: [16, 16]
         });
 
-    });
-}
+        let pharmacyMarkers = {};
+
+        function updatePricePanel(pharmacyKey) {
+            const checked = document.querySelectorAll('input[name="pharmacy"]:checked');
+            const pricesDiv = document.getElementById('pharmacyPrices');
+            const priceTable = document.getElementById('priceTable');
+            const nameSpan = document.getElementById('priceSelectedName');
+
+            if (checked.length === 0) {
+                pricesDiv.classList.remove('visible');
+                return;
+            }
+
+            const lastKey = pharmacyKey || checked[checked.length - 1].value;
+            const data = pharmacyData[lastKey];
+            if (!data) return;
+
+            nameSpan.textContent = data.name;
+            priceTable.innerHTML = data.prices.map(p =>
+                `<tr><td>${p.med}</td><td>${p.price}</td></tr>`
+            ).join('');
+
+            pricesDiv.classList.add('visible');
+        }
+
+        document.querySelectorAll('input[name="pharmacy"]').forEach(cb => {
+            cb.addEventListener('change', function() {
+                const key = this.value;
+                const label = this.closest('.pharmacy-checkbox-label');
+
+                if (this.checked) {
+                    const data = pharmacyData[key];
+                    if (data && !pharmacyMarkers[key]) {
+                        const marker = L.marker(data.coords, { icon: pharmacyIcon })
+                            .addTo(map)
+                            .bindPopup(`<b>💊 ${data.name}</b><br>♿ Accessible · Budget-friendly`);
+                        pharmacyMarkers[key] = marker;
+                    }
+                    label.classList.add('selected');
+                    updatePricePanel(key);
+                } else {
+                    if (pharmacyMarkers[key]) {
+                        map.removeLayer(pharmacyMarkers[key]);
+                        delete pharmacyMarkers[key];
+                    }
+                    label.classList.remove('selected');
+
+                    const stillChecked = document.querySelectorAll('input[name="pharmacy"]:checked');
+                    if (stillChecked.length > 0) {
+                        updatePricePanel(stillChecked[stillChecked.length - 1].value);
+                    } else {
+                        document.getElementById('pharmacyPrices').classList.remove('visible');
+                    }
+                }
+            });
+        });
     </script>
 </body>
 </html>
