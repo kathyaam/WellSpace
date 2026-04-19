@@ -286,8 +286,9 @@ Examples:
                 <div>
                     <input type="date" class="date-input" value="${date}">
                 </div>
-                <div>
+                <div style="display:flex; gap:6px;">
                     <button class="notes-btn ${note ? 'has-notes' : ''}" data-note="${note.replace(/"/g, '&quot;')}">📝</button>
+                    <button class="delete-btn">🗑️</button>
                 </div>
             `;
 
@@ -309,6 +310,11 @@ Examples:
             // Notes button
             const notesBtn = row.querySelector('.notes-btn');
             notesBtn.addEventListener('click', () => openNotesModal(notesBtn));
+            const deleteBtn = row.querySelector('.delete-btn');
+            deleteBtn.addEventListener('click', () => {
+            row.remove();
+            saveMeds();
+            });
 
             return row;
         }

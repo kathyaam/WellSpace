@@ -749,3 +749,37 @@ body {
 ::-webkit-scrollbar-track { background: var(--bg-primary); }
 ::-webkit-scrollbar-thumb { background: var(--accent-secondary); border-radius: 4px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--accent-primary); }
+
+/*delete buttons */
+.delete-btn {
+    background: #fdecea;
+    border: 1px solid #f5c6c2;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    transition: all 0.2s ease;
+}
+.delete-btn:hover {
+    background: #e74c3c;
+    border-color: #e74c3c;
+}
+
+.delete-apt-btn {
+    background: #fdecea;
+    border: 1px solid #f5c6c2;
+    border-radius: var(--radius-sm);
+    padding: 6px 10px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+}
+.delete-apt-btn:hover {
+    background: #e74c3c;
+    border-color: #e74c3c;
+}
