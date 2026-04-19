@@ -4,6 +4,75 @@
     font-family: 'Poppins', sans-serif;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
+/* ── Hero section divider ── */
+.hero-section {
+    border-bottom: 1px solid rgba(74, 124, 140, 0.12);
+    padding-bottom: 40px;
+}
+
+/* ── About section background ── */
+#about {
+    background: rgba(74, 124, 140, 0.04);
+    border-radius: 32px;
+    margin: 0 20px;
+    padding: 60px 40px;
+}
+
+/* ── Section label above headings ── */
+.section-label {
+    text-align: center;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #4a7c8c;
+    margin-bottom: 12px;
+}
+
+/* ── Contact section ── */
+#contact {
+    padding: 60px 20px;
+}
+
+/* ── Feature pills under hero ── */
+.feature-pills {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+.pill {
+    background: rgba(74, 124, 140, 0.1);
+    color: #4a7c8c;
+    border-radius: 999px;
+    padding: 8px 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    width: 100%;
+    text-align: left;
+}
+
+.feature-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    background: white;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 4px 12px rgba(74, 124, 140, 0.1);
+    border: 1px solid rgba(74, 124, 140, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.feature-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(74, 124, 140, 0.15);
+}
+
 /* Wobble animation for the letter w/ heart emoji in contact us */
 @keyframes whereinmnl-wobble {
     0%, 100% { transform: rotate(0deg); }
@@ -105,7 +174,6 @@ min-height: 100vh;
 }
 
 .navbar-brand img {
-    filter: brightness(0) invert(1);
     border-radius: 50%;
 }
  
@@ -242,18 +310,18 @@ footer.bg-light {
     border-top: none !important;
     background: linear-gradient(135deg, #2c3e50, #4a7c8c) !important;
 }
- 
+
 footer .text-dark {
     color: var(--white) !important;
 }
- 
+
 footer p {
     color: var(--white) !important;
     font-weight: 700;
     font-size: 1rem;
     letter-spacing: 1px;
 }
- 
+
 footer small {
     color: rgba(255, 255, 255, 0.6) !important;
     font-size: 0.8rem;
